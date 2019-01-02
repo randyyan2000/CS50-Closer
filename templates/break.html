@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Break Schedule
+{% endblock %}
+
+{% block main %}
+    <h1>Break Schedule</h1>
+    <form id="form" action="/breaks" method="post">
+        {% if breaks|length == 0 %}
+            <div id="1" class="form-group">
+                1.  <input autocomplete="off" autofocus class="form-control" name="start1" type="date" required> to
+                <input autocomplete="off" class="form-control" name="end1" type="date" required>
+                <button id="rem1" style="visibility: hidden" type="button" onclick="removeField(this.id)" class="btn btn-primary circle-button">-</button>
+            </div>
+        {% else %}
+        {% for break in breaks %}
+            <div id="{{ loop.index }}" class="form-group">
+                {{ loop.index }}.  <input autocomplete="off" autofocus class="form-control" name="start{{ loop.index }}" type="date" value={{ break.start }} required> to
+                <input autocomplete="off" class="form-control" name="end{{ loop.index }}" type="date" value={{ break.end }} required>
+                <button id="rem1" style={% if breaks|length == 1 %} "visibility: hidden" {% endif %} type="button" onclick="removeField(this.id)" class="btn btn-primary circle-button">-</button>
+            </div>
+        {% endfor %}
+        {% endif %}
+        <div id="buttonsDiv">
+            <button id="addButton" type="button" onclick="addField()" class="btn btn-primary circle-button">+</button>
+            <button id='submit' class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        let counter = {% if breaks|length == 0 %} 1 {% else %} {{ breaks|length }} {% endif %};
+        var wrapper= document.createElement('div');
+        wrapper.innerHTML= '<button id="rem1" type="button" onclick="removeField(this.id)" class="btn btn-primary circle-button">-</button>';
+        var remTemplate= wrapper.firstChild;
+        let form = document.getElementById("form");
+        console.log(form.childNodes)
+        for (let i = 0; i < form.childNodes.length; i++)
+        {
+            if (form.childNodes[i].tagName != 'DIV')
+            {
+                form.removeChild(form.childNodes[i]);
+                i--;
+            }
+            else
+            {
+                for (let j = 1; j <= 3; j += 2)
+                {
+                    form.childNodes[i].childNodes[j].addEventListener("keyup", function(event) {
+                        event.preventDefault();
+                        if (event.keyCode === 13) {
+                            document.getElementById("submit").click();
+                        }
+                    });
+                }
+            }
+        }
+        // form.removeChild(form.lastChild);
+        // form.removeChild(form.firstChild);
+        // form.removeChild(form.childNodes[1]);
+        console.log(form.childNodes)
+
+        var textNode = document.createTextNode("1.  ");
+        document.getElementById("1").replaceChild(textNode, document.getElementById("1").childNodes[0]);
+        document.getElementById("1").removeChild(document.getElementById("1").lastChild);
+
+        let firstFormField = document.getElementById("1").cloneNode(true);
+        console.log(firstFormField.childNodes);
+        firstFormField.childNodes[1].value = "0000-00-00";
+        firstFormField.childNodes[3].value = "0000-00-00";
+        function removeField(id)
+        {
+            console.log("removing: '" + id + "'");
+            let num = Number(id.substring(3));
+            document.getElementById("form").removeChild(document.getElementById(num));
+            let form = document.getElementById("form");
+            for (let i = num - 1; i < counter - 1; i++)
+            {
+                let child = form.childNodes[i];
+                console.log(child);
+                rename(child, i + 1);
+            }
+            counter--;
+            if (counter == 1)
+                document.getElementById("rem1").setAttribute("style", "visibility: hidden");
+            // for (let i = 0; i < form.childNodes.length; i++)
+            // {
+            //     console.log(i);
+            //     console.log(form.childNodes[i]);
+            // }
+            console.log(counter);
+        }
+        function rename(child, num)
+        {
+            console.log('renaming ' + child + 'to ' + num);
+            for (let i = 0; i < child.childNodes.length; i++)
+            {
+                console.log(child.childNodes[i]);
+            }
+            child.setAttribute("id", num);
+            var textNode = document.createTextNode(num + ".  ");
+            child.replaceChild(textNode, child.childNodes[0]);
+            child.childNodes[1].setAttribute("name", "start" + num);
+            child.childNodes[3].setAttribute("name", "end" + num);
+            child.childNodes[5].setAttribute("id", "rem" + num);
+
+        }
+        function addField()
+        {
+            console.log("adding input field");
+            let formTemplate = firstFormField.cloneNode(true);
+            formTemplate.removeChild(formTemplate.lastChild);
+            let buttonsDiv = document.getElementById("buttonsDiv").parentNode.removeChild(document.getElementById("buttonsDiv"));
+            counter++;
+            formTemplate.setAttribute("id", counter);
+            var textNode = document.createTextNode(counter + ".  ");
+            formTemplate.replaceChild(textNode, formTemplate.childNodes[0]);
+            formTemplate.childNodes[1].setAttribute("name", "start" + counter);
+            formTemplate.childNodes[3].setAttribute("name", "end" + counter);
+            let remButton = remTemplate.cloneNode(true);
+            remButton.setAttribute("id", "rem" + counter);
+            formTemplate.appendChild(remButton);
+
+            document.getElementById("form").appendChild(formTemplate);
+            document.getElementById("form").appendChild(buttonsDiv);
+
+            document.getElementById("rem1").setAttribute("style", "visibility: visible");
+            console.log(counter);
+        }
+    </script>
+{% endblock %}

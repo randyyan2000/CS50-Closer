@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block main %}
+    <h1 id="timer">{{ time }}</h1>
+
+    <script>
+        let countDownDate = new Date({{ time.year }}, {{ time.month }} - 1, {{ time.day }}, {{ time.hour }}, {{ time.minute }}, {{ time.second }});
+
+        console.log(countDownDate)
+        // Decrement timers
+        let  = setInterval(function() {
+            let distance = countDownDate - new Date().getTime();
+
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+        }, 1000);
+    </script>
+{% endblock %}

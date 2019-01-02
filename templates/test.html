@@ -1,0 +1,2529 @@
+<style>
+ .site-content-wrap{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        background-repeat: no-repeat;
+        -ms-background-size: 100%;
+        background-size: 100%;
+        padding-top: 0;
+    }
+
+    #formcontainer{
+        display: block;
+        background-color: rgba(0,0,0,.75);
+        color: #c7c7c7;
+        box-shadow: 0 0 .8823em 0 rgba(0,0,0,.5);
+        border-radius: .17647059em;
+        padding: .70588235em 1.05882353em;
+        max-width: 1116px;
+        max-height: 290px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media all and (max-width: 410px){
+        #formcontainer {
+            max-height: 50%;
+        }
+    }
+
+    #pageHeader{
+        position: relative;
+        border-radius: .17647059em;
+        padding: .4em 1.05882353em;
+    }
+
+    #cardText{
+        position: relative;
+        border-radius: .17647059em;
+        padding: .4em 1.05882353em;
+    }
+
+    #verifyButton {
+        position: relative;
+        border-radius: .17647059em;
+        padding: .4em 1.05882353em;
+    }
+</style>
+<html class="no-js" data-language="en_US" data-version="v2.145.4.fc989369f953753c5c6a3e93ed41acd47ef12981" dir="ltr" lang="en">
+ <head>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <meta charset="utf-8">
+   <link href="//a.intentmedia.net" rel="dns-prefetch"/>
+   <link href="//images.trvl-media.com" rel="dns-prefetch"/>
+   <link href="//a.travel-assets.com/" rel="dns-prefetch"/>
+   <link href="//b.travel-assets.com/" rel="dns-prefetch"/>
+   <link href="//c.travel-assets.com/" rel="dns-prefetch"/>
+   <title>
+    Bot or Not?
+   </title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+   <link href="/favicon.ico" rel="shortcut icon" sizes="16x16 32x32" type="image/x-icon"/>
+   <link href="/favicon.ico" rel="icon" sizes="16x16 32x32" type="image/x-icon"/>
+   <script src="//b.travel-assets.com/uitoolkit/2-145/fc989369f953753c5c6a3e93ed41acd47ef12981/core/js/uitk-lib-bundle-min.js">
+   </script>
+   <!--[if IE 8]>
+    <script src="//b.travel-assets.com/uitoolkit/2-145/fc989369f953753c5c6a3e93ed41acd47ef12981/core/js/uitk-ie8-bundle-min.js"></script>
+
+  <![endif]-->
+   <link href="//a.travel-assets.com/uitoolkit/2-145/fc989369f953753c5c6a3e93ed41acd47ef12981/core/minifiedCss/brands/expedia-responsive.css" rel="stylesheet" type="text/css"/>
+   <!--[if IE 8]>
+    <link rel='stylesheet' type='text/css' href='//a.travel-assets.com/uitoolkit/2-145/fc989369f953753c5c6a3e93ed41acd47ef12981/core/minifiedCss/brands/expedia-ie8.css'/>
+<![endif]-->
+   <script async="" defer="" src="//c.travel-assets.com/uitoolkit/2-145/fc989369f953753c5c6a3e93ed41acd47ef12981/core/js/uitk-jquery-jstemplate-bundle-min.js">
+   </script>
+   <script async="" defer="" src="//a.travel-assets.com/uitoolkit/2-145/fc989369f953753c5c6a3e93ed41acd47ef12981/core/js/uitk-core-bundle-min.js">
+   </script>
+   <script async="" defer="" src="//www.expedia.com/i18n/1/en_US/dateTimeFormats.js?module=exp_datetimeformats">
+   </script>
+   <link href="//a.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/styles/1/en_US/globalcontrols-min.css" rel="stylesheet"/>
+   <script src="https://www.google.com/recaptcha/api.js?hl=en">
+   </script>
+  </meta>
+ </head>
+ <body class="wrap cf layout-1col-a">
+  <div data-global-control="header" data-tab="null" id="header-container">
+   <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/header.html -->
+   <!-- GLOBAL_CONTROLS_HEADER -->
+   <div class="skip-nav" id="skipNav">
+    <a href="#skip-nav-anchor">
+     Skip to main content
+    </a>
+   </div>
+   <div class="site_1 en_US b2p-yellow-header " role="banner">
+    <div class="cobranded" id="cobranded-header">
+    </div>
+    <div id="opt-in-cookie">
+    </div>
+    <div class="alert alert-banner redirect-banner secondary cf hidden" id="disclaimerMessageBanner">
+     <div class="cols-row disclaimerMessage">
+      Welcome to
+      <u>
+       {{displayDomain}}
+      </u>
+      , a US site operated by Expedia, Inc., a Washington corporation.
+     </div>
+     <div class="displayDomain hidden">
+      Expedia.com
+     </div>
+    </div>
+    <div class="alert alert-banner redirect-banner secondary cf hidden" id="redirectBanner">
+     <div class="cols-row">
+      <span class="welcomeMsg">
+       Welcome to {{domainText}}
+      </span>
+      <a href="//www.expedia.com" target="_top">
+       <strong>
+        Continue to the U.S. site at {{usSiteDomain}}
+       </strong>
+      </a>
+      <button class="btn-close icon icon-close btn-primary" type="button">
+       <span class="btn-label">
+        <span class="alt">
+         close
+        </span>
+       </span>
+      </button>
+     </div>
+    </div>
+    <div class="alert alert-banner secondary hidden" id="header-alert-banner">
+     <div class="cf" id="travel-arranger">
+      <div class="message">
+       Booking travel on behalf of
+       <strong>
+        <span id="arrangee-first-name">
+        </span>
+        <span id="arrangee-last-name">
+        </span>
+       </strong>
+      </div>
+      <a class="close" href="/user/travelarranger/end" target="_top">
+       Done
+      </a>
+     </div>
+    </div>
+    <div id="mad-header-container">
+     <div class="white-static-banner" id="mobile-app-banner-wrapper" style="display: none;">
+      <!--close svg icon -->
+      <svg class="icon" enable-background="new 0 0 18 18" height="16px" id="gc-mad-banner-close" viewbox="0 0 18 18" width="16px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+       <path d="M14.4,5.9c0.1-0.1,0.1-0.2,0.1-0.3s0-0.2-0.1-0.3l-1.7-1.7c-0.2-0.2-0.4-0.2-0.6,0L9,6.7L5.9,3.6
+                    C5.8,3.5,5.7,3.5,5.6,3.5c-0.1,0-0.2,0-0.3,0.1L3.6,5.3c-0.2,0.2-0.2,0.4,0,0.6L6.7,9l-3.1,3.1c-0.1,0.1-0.1,0.2-0.1,0.3
+                    s0,0.2,0.1,0.3l1.7,1.7c0.2,0.2,0.4,0.2,0.6,0L9,11.3l3.1,3.1c0.2,0.2,0.4,0.2,0.6,0l1.7-1.7c0.1-0.1,0.1-0.2,0.1-0.3s0-0.2-0.1-0.3
+                    L11.3,9L14.4,5.9L14.4,5.9L14.4,5.9z" fill="#ffffff">
+       </path>
+      </svg>
+      <a href="https://t1y-8.tlnk.io/serve?action=click&amp;publisher_id=169006&amp;site_id=102712&amp;agency_id=1034&amp;my_campaign=BRAND&amp;my_publisher=EXPEDIA-US&amp;my_site=GENERIC&amp;my_adgroup=BRAND:DISPLAY.EOD&amp;my_ad=BRAND.EXPEDIA-US.DISPLAY.EOD.GCHEADERMWEB-.GENERIC&amp;my_placement=GCHEADERMWEB&amp;site_id_android=107678&amp;site_id_web=128450" id="gc-mad-banner-link" target="_blank">
+       <div class="slide4">
+       </div>
+       <div class="slide4a">
+        <div>
+         Download the free app
+        </div>
+        <div>
+         <p>
+          Save up to 30% off hotels with mobile exclusive deals
+         </p>
+        </div>
+       </div>
+       <!--toggle90 svg icon -->
+       <svg aria-hidden="true" class="icon toggle-icon" enable-background="new 0 0 18 18" height="30px" id="toggle90-svg" viewbox="0 0 18 18" width="30px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+        <path d="M12.8,8.7c0.1,0.1,0.1,0.2,0.1,0.3s0,0.2-0.1,0.3l-5.5,5.5c-0.1,0.1-0.4,0.1-0.5,0l-1.6-1.6
+                    c-0.1-0.1-0.1-0.4,0-0.5L8.8,9L5.2,5.3C5,5.2,5,4.9,5.2,4.8l1.6-1.6c0.1-0.1,0.4-0.1,0.5,0L12.8,8.7L12.8,8.7z" fill="#ffffff">
+        </path>
+       </svg>
+      </a>
+     </div>
+    </div>
+    <div id="agent-arranger-bar-container">
+    </div>
+    <div class="site-header site-header-primary" role="navigation">
+     <div class="cols-row">
+      <a data-omniture-id="Header.Logo" data-tid="header-logo" href="/" id="header-logo" target="_top">
+       <img alt="www.expedia.com" border="0" itemprop="image" onerror="this.src=this.src.replace('.svg?','.png?');this.onerror='';this.style='';" src="//www.expedia.com/_dms/header/logo.svg?locale=en_US&amp;siteid=1&amp;test=b2p-yellow-header" style="font-size:0;"/>
+      </a>
+      <div class="rewardsHeader rewardsInHeader hidden" id="rewardsHeader">
+       <a class="benefits_link" href="/rewards/color?rfrr=Header.Rewards.BadgeTier" target="_blank">
+        <div class="tierBadge">
+        </div>
+       </a>
+       <div class="pointsDisplay hidden">
+       </div>
+      </div>
+      <ul class="mobile-language-links cf">
+      </ul>
+      <div class="top-menu-container">
+       <!-- Responsive Menu Toggle -->
+       <button aria-controls="globalSiteNavigation" aria-expanded="false" class="btn off-canvas-btn menu-toggle-btn" id="mobile-toggle-header-link">
+        <span class="topCustomer-icon-mobile" id="topCustomer-icon-id-mobile">
+        </span>
+        <span class="visuallyhidden" id="show-menu">
+         Show Menu
+        </span>
+        <span class="visuallyhidden hidden" id="hide-menu">
+         Hide Menu
+        </span>
+        <!--offcanvas svg icon-->
+        <svg aria-hidden="true" class="icon" enable-background="new 0 0 18 18" height="18px" id="header-mobile-toggle" viewbox="0 0 18 18" width="18px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+         <path d="M18,15.4c0,0.2-0.2,0.4-0.4,0.4H0.4c-0.2,0-0.4-0.2-0.4-0.4v-2.2c0-0.2,0.2-0.4,0.4-0.4h17.2
+                            c0.2,0,0.4,0.2,0.4,0.4V15.4z M18,2.6c0-0.2-0.2-0.4-0.4-0.4H0.4C0.2,2.2,0,2.4,0,2.6v2.3c0,0.2,0.2,0.4,0.4,0.4h17.2
+                            c0.2,0,0.4-0.2,0.4-0.4V2.6z M18,7.9c0-0.2-0.2-0.4-0.4-0.4H0.4C0.2,7.5,0,7.7,0,7.9v2.2c0,0.2,0.2,0.4,0.4,0.4h17.2
+                            c0.2,0,0.4-0.2,0.4-0.4V7.9z" fill="ffffff">
+         </path>
+        </svg>
+       </button>
+       <!-- / End Responsive Menu Toggle -->
+       <div class="menu-bar" id="account-menu-header">
+        <ul class="menu-bar-inner">
+         <li class="fav-hotels-link">
+          <a aria-expanded="false" class="header-history nav-tab" data-tid="header-history" href="/scratchpad?rfrr=HP.SCRATCHPAD.HEADER.ENG" id="header-history-sm" rel="nofollow" role="button" target="_top">
+           <!--heart svg icon-->
+           <svg aria-hidden="true" class="icon svg-header-icon" enable-background="new 0 0 18 18" height="16px" viewbox="0 0 18 18" width="16px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+            <path d="M9,16.7L1.5,9.2c-1.8-1.8-1.8-4.8,0-6.7c1.8-1.8,4.8-1.8,6.6,0L9,3.4l0.9-0.9c1.8-1.8,4.8-1.8,6.6,0
+                                    c1.8,1.8,1.8,4.8,0,6.7L9,16.7z" fill="#00355f">
+            </path>
+           </svg>
+           <span class="alt">
+            Saved Hotels
+           </span>
+          </a>
+         </li>
+         <li class="account-icon-link">
+          <button aria-controls="AccountIconMenu" aria-expanded="false" class="trigger-link menu-trigger btn-text theme-standard pin-center menu-arrow " data-auto-pos="true" data-control="menu" id="account-menu-icon" type="button">
+           <span class="visuallyhidden">
+            Show Account Menu
+           </span>
+           <span class="btn-label">
+            <div class="signedIn hidden">
+             <span aria-hidden="true" class="icon-signedIn">
+              <img alt="User Icon" class="signedInIcon" src="//a.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/images/user-signIn-icon.svg"/>
+             </span>
+            </div>
+            <div class="notSignedIn">
+             <!--traveler svg icon-->
+             <svg aria-hidden="true" class="svg-header-icon" enable-background="new 0 0 18 18" height="18px" id="traveler-svg" viewbox="0 0 18 18" width="18px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+              <path d="M17.8,13.8c-0.6-0.3-3-1.6-6.2-2.2l0-2.3c0.7-0.8,1.1-1.9,1.1-2.9V4.8c0-2-1.6-3.6-3.6-3.6S5.4,2.8,5.4,4.8
+                                        v1.6c0,1,0.4,2.1,1.1,3l-0.1,2.3c-3.3,0.5-5.6,1.9-6.2,2.2C0.1,13.9,0,14.1,0,14.2v2.6h18v-2.6C18,14.1,17.9,13.9,17.8,13.8
+                                        L17.8,13.8L17.8,13.8z" fill="#00355f">
+              </path>
+             </svg>
+            </div>
+           </span>
+          </button>
+          <div aria-hidden="true" class="menu menu-arrow-example" id="AccountIconMenu">
+           <div class="menu-main">
+            <ul class="signedIn">
+             <li>
+              <span class="icon-menu-SignedIn">
+               <img alt="User Icon" class="signedInIcon" src="//a.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/images/user-signIn-icon.svg"/>
+              </span>
+              <div class="userDetails">
+               <span>
+               </span>
+              </div>
+              <div class="loyaltyDetails">
+               <div class="joinExpediaRewards hidden">
+                <span>
+                 0 points
+                </span>
+                <a href="/user/RegRewards">
+                 Join Expedia Rewards
+                </a>
+               </div>
+               <div class="rewardsHeader rewardsInAccountIcon hidden" id="rewardsAccountMenu">
+                <a class="benefits_link" href="/rewards/color?rfrr=Header.Rewards.BadgeTier" target="_blank">
+                 <div class="tierBadge">
+                 </div>
+                </a>
+                <div class="pointsDisplay hidden">
+                </div>
+               </div>
+              </div>
+             </li>
+            </ul>
+            <ul class="notSignedIn">
+             <li>
+              <div class="wrapper">
+               <span id="getLowRatesOnHotels">
+                Get lower rates on thousands of hotels.
+               </span>
+              </div>
+             </li>
+             <li>
+              <div class="wrapper">
+               <button class="btn-action btn-primary" data-onclick="appendRedirectionUrl(this); xp.nav.trackAnalytics(this,'a','Header.Signin'); return false;" data-tid="header-accountMenu-signin" id="header-accountMenu-signin" onclick="location.href = '/user/login?';" rel="nofollow" target="_top" type="button">
+                <span class="btn-label">
+                 Sign In
+                </span>
+               </button>
+              </div>
+             </li>
+             <li>
+              <div class="wrapper">
+               <span id="createExpediaAccount">
+                or
+                <a data-onclick='xp.nav.trackAnalytics(this, "a", "Header.CreateAccount")' href="/user/createaccount" id="header-account-signup">
+                 create an {{0}} Account
+                </a>
+               </span>
+              </div>
+             </li>
+            </ul>
+            <hr/>
+            <ul class="menu-links">
+             <li>
+              <a data-onclick="xp.nav.trackAnalytics(this,'a','Header.MyAccount')" data-tid="account-menu-myaccount" href="/user/account" id="account-menu-myaccount" rel="nofollow" target="_top">
+               My Account
+              </a>
+             </li>
+             <li>
+              <a class="nav-tab" data-onclick="xp.nav.trackAnalytics(this,'a','Header.MyItineraries');" data-tid="account-menu-itineraries" href="/trips" id="account-menu-itineraries" rel="nofollow" target="_top">
+               My Trips
+              </a>
+             </li>
+             <li class="account-menu-rewards hidden">
+              <a class="nav-tab" data-onclick="xp.nav.trackAnalytics(this,'a','Header.MyRewards');" data-tid="account-menu-rewards" href="/user/expediarewards" id="account-menu-rewards" rel="nofollow" target="_top">
+               My Rewards
+              </a>
+             </li>
+            </ul>
+            <div class="signedIn">
+             <hr/>
+             <ul>
+              <li>
+               <a class="nav-tab" data-onclick="appendRedirectionUrl(this); xp.nav.trackAnalytics(this,'a','Header.Signout'); return false;" data-tid="account-menu-signout" href="/user/logout?" id="account-menu-signout" rel="nofollow" target="_top">
+                Sign Out
+               </a>
+              </li>
+             </ul>
+            </div>
+           </div>
+          </div>
+         </li>
+        </ul>
+       </div>
+       <div class="site-navigation cf" id="globalSiteNavigation">
+        <ul class="utility-nav below726 nav-group cf">
+         <li id="shop-menu">
+          <button class="nav-tab btn-text" data-control="menu" data-tid="header-shop-menu" href="#shop-menu" id="header-shop-menu">
+           <span class="btn-label">
+            Shop Travel
+            <span aria-hidden="true" class="icon icon-toggle180">
+            </span>
+           </span>
+          </button>
+          <div class="menu">
+           <ul>
+            <li>
+             <a data-omniture-id="Header.Flights" data-route="/Flights" href="/Flights" id="sub-menu-header-shop-flight" target="_top">
+              Flights
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.Hotels" data-route="/Hotels" href="/Hotels" id="sub-menu-header-shop-hotel" target="_top">
+              Hotels
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.VacationPackages" data-route="/Vacation-Packages" href="/Vacation-Packages" id="sub-menu-header-shop-package" target="_top">
+              Bundle and Save
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.Cars" data-route="/Cars" href="/Cars" id="sub-menu-header-shop-car" target="_top">
+              Cars
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.Cruises" data-route="/Cruises" href="/Cruises" id="sub-menu-header-shop-cruise" target="_top">
+              Cruises
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.ThingsToDo" data-route="/Activities" href="/Activities" id="sub-menu-header-shop-activity" target="_top">
+              Things to Do
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.Events" data-route="/event-tickets/?rfrr=3PT.EventTickets.GCTab&amp;utm_source=expedia_header&amp;utm_medium=event_tickets&amp;utm_campaign=expedia_header_event_tickets_tab" href="/event-tickets/?rfrr=3PT.EventTickets.GCTab&amp;utm_source=expedia_header&amp;utm_medium=event_tickets&amp;utm_campaign=expedia_header_event_tickets_tab" id="sub-menu-header-shop-events" target="_top">
+              Event Tickets
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.open-search" data-route="/search-results?rfrr=headermenu" href="/search-results?rfrr=headermenu" id="sub-menu-header-shop-discover" target="_top">
+              Discover
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.VacationRentals" data-route="/vacation-rentals/" href="/vacation-rentals/" id="sub-menu-header-shop-vacationRental" target="_top">
+              Vacation Rentals
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.Deals" data-route="/Deals" href="/Deals" id="sub-menu-header-shop-deals" target="_top">
+              Deals
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.Rewards" data-route="/user/expediarewards" href="/user/expediarewards" id="sub-menu-header-shop-rewards" target="_top">
+              Rewards
+             </a>
+            </li>
+            <li>
+             <a data-omniture-id="Header.MobileApp" data-route="/app" href="/app" id="sub-menu-header-shop-mobile" target="_top">
+              Mobile
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+        </ul>
+        <ul class="shop-nav nav-group cf">
+         <li id="header-partner-add-hotel-container" style="display: block;">
+          <a class="nav-tab" href="https://join.expediapartnercentral.com/LangCode/{LANGID}?utm_source={POS}&amp;utm_medium=referral&amp;utm_campaign={PAGE_NAME}&amp;utm_content=header-btn" rel="nofollow" target="_blank">
+           Add your property
+          </a>
+         </li>
+         <li id="account-menu">
+          <button aria-expanded="false" class="nav-tab trigger-link menu-trigger btn-text theme-standard pin-right " data-auto-pos="false" data-control="menu" data-omniture-id="Header.AccountHeading" data-onclick="" id="header-account-menu" type="button">
+           <span class="btn-label">
+            <span class="selected-item">
+             Account
+            </span>
+            <span aria-hidden="true" class="icon icon-toggle180">
+            </span>
+           </span>
+          </button>
+          <div class="menu">
+           <ul>
+            <li>
+             <a "="" data-omniture-id="Header.Signin" data-onclick="appendRedirectionUrl(this);  return false;" href="/user/signin?ckoflag=0 " id="account-signin" rel="nofollow" target="_top">
+              Sign In
+             </a>
+            </li>
+            <li>
+             <a "="" data-omniture-id="Header.CreateAccount" data-onclick="appendRedirectionUrl(this);  return false;" href="/user/createaccount? " id="account-register" rel="nofollow" target="_top">
+              Create an Account
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+         <li id="account-menu-signed-in">
+          <button aria-expanded="false" class="nav-tab trigger-link menu-trigger btn-text theme-standard pin-right hidden" data-auto-pos="false" data-control="menu" data-omniture-id="Header.AccountHeading" data-onclick="" id="header-account-menu-signed-in" type="button">
+           <span class="btn-label">
+            <span class="selected-item">
+             <span class="nonArrangedUser hidden">
+              Hello,
+              <span id="userGreetingName">
+              </span>
+             </span>
+             <span class="arrangedUser hidden">
+              <span id="arrangedUserGreetingName">
+              </span>
+              's Account
+             </span>
+            </span>
+            <span aria-hidden="true" class="icon icon-toggle180">
+            </span>
+           </span>
+          </button>
+          <div class="menu">
+           <ul>
+            <li>
+             <a "="" data-omniture-id="Header.MyAccount" data-onclick="" href="/user/account" id="account-myaccount" rel="nofollow" target="_top">
+              My Account
+             </a>
+            </li>
+            <li>
+             <a "="" data-omniture-id="Header.SignOut" data-onclick="appendRedirectionUrl(this);  return false;" href="/user/logout" id="account-signout" rel="nofollow" target="_top">
+              Sign Out
+             </a>
+            </li>
+            <li>
+             <a "="" data-omniture-id="Header.SignOut" data-onclick="appendRedirectionUrl(this);  return false;" href="/user/logout" id="identified-account-signout" rel="nofollow" target="_top">
+              Not
+              <span id="userGreetingNameSignOut">
+              </span>
+              ?
+             </a>
+            </li>
+            <li>
+             <a "="" data-omniture-id="Header.SignOut" data-onclick="appendRedirectionUrl(this);  return false;" href="/user/logout" id="identified-account-signout-v2" rel="nofollow" target="_top">
+              Not
+              <span id="userGreetingNameSignOut-v2">
+              </span>
+              ?
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
+<span class="type-200">
+ Log in to your account
+</span>
+<li class="user-history-tab scratchpad" data-arrow="true" data-content="TT CONTENT" data-control="tooltip" data-fade="out" data-js-theme="urgency" data-localized-content='{"link":{"scratchpadName":"My Lists"},"badge":{"badgeSRSingle":"You have 1 recent search","badgeSRMany":"You have {{count}} recent searches"},"tooltip":{},"menu":{"greeting":"Things you view while shopping are saved here.","loading":"Loading your lists...","viewAllPlain":"View your lists","viewAllWithCount":"View all {{count}} items"},"item":{"seePrice":"See price","asOfTime":"as of {{lastSeenTime}}","asOfDate":"as of {{lastSeenDate}}","fromToDate":"{{startDate}} - {{endDate}}","fromToTime":"{{startTime}} - {{endTime}}","fromToAirports":"{{departureAirportCode}} to {{arrivalAirportCode}}","from":"from {{itemPrice}}","roundTrip":"Round trip","oneWay":"One way","carsAt":"Cars at {{destination}}","carsNear":"Cars near {{destination}}","hotelSearchAvgPerNight":"avg per night","hotels":"{{destination}} hotels","packages":"{{packageDestination}} Packages","packageIncludes":"Flight and hotel included","daily":"daily","weekly":"weekly","total":"total","airlineLogoAltText":"logo","multiAirlineAltText":"Multiple Airlines logo","perPerson":"per person","perNight":"per night","cruises":"Cruises","allMonths":"All Months","allDestinations":"All Cruise Destinations","perTraveler":"per traveler"}}' data-trigger="" data-tt-color="yellow" data-width="250">
+ <a class="header-history nav-tab" data-onclick="/*xp.nav.trackAnalytics(this,'a','Header.SP.Tray.Interaction')*/" data-tid="header-history" href="/scratchpad" id="header-history" rel="nofollow" target="_top">
+  <span class="sp-name">
+  </span>
+  <span class="sp-badge">
+   <span aria-hidden="true" class="count">
+   </span>
+   <span class="visuallyhidden badge-description">
+   </span>
+  </span>
+  <span aria-hidden="true" class="arrow-placeholder">
+  </span>
+ </a>
+ <div class="menu double-wide">
+  <div class="scratchpad-menu-wrapper">
+   <div class="menu-header">
+    <p class="greeting-message default-message" style="display:none;">
+     Things you view while shopping are saved here.
+    </p>
+    <p class="greeting-message loading-message">
+    </p>
+   </div>
+   <div aria-hidden="true" class="loading-wrapper">
+    <span aria-hidden="true" class="loader loader-light loader-animated loading">
+    </span>
+   </div>
+   <ul class="item-list" style="display:none;">
+   </ul>
+   <div class="scratchpad-item last-tray-item">
+    <a class="view-all-history item-link" href="/scratchpad?rfrr=SP.Tray.SP">
+    </a>
+   </div>
+  </div>
+ </div>
+</li>
+<li id="utility-link">
+ <a class="nav-tab" data-omniture-id="Header.MyItineraries');" data-tid="header-itineraries" href="/trips " id="header-itineraries" rel="nofollow" target="_top">
+  My Trips
+ </a>
+</li>
+<li id="support-menu">
+ <button aria-expanded="false" class="nav-tab trigger-link menu-trigger btn-text theme-standard pin-right " data-auto-pos="false" data-control="menu" data-omniture-id="Header.SupportHeading" data-onclick="" id="header-support-menu" type="button">
+  <span class="btn-label">
+   <span class="selected-item">
+    Support
+   </span>
+   <span aria-hidden="true" class="icon icon-toggle180">
+   </span>
+  </span>
+ </button>
+ <div class="menu">
+  <ul>
+   <li>
+    <a "="" data-omniture-id="Header.CustSupport" data-onclick="" href="/service/" id="support-cs" rel="nofollow" target="_top">
+     Customer Support
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Feedback" data-onclick="headerFeedback();return false;" href="/p/info-other/feedback.htm" id="support-feedback" rel="nofollow" target="_top">
+     Feedback
+    </a>
+   </li>
+  </ul>
+ </div>
+</li>
+<li id="currency-menu">
+ <button aria-expanded="false" class="nav-tab trigger-link menu-trigger btn-text theme-standard pin-right hidden" data-auto-pos="false" data-control="menu" data-omniture-id="Header.CurrencyMenu" data-onclick="" id="header-currency-menu" type="button">
+  <span class="btn-label">
+   <span class="selected-item">
+    USD
+   </span>
+   <span aria-hidden="true" class="icon icon-toggle180">
+   </span>
+  </span>
+ </button>
+ <div class="menu">
+  <ul>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.USD" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=USD&amp;rfrr=Header.Currency.USD" id="currency-USD" rel="nofollow" target="_top">
+     USD
+     <em>
+      USA, Dollar
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.AED" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=AED&amp;rfrr=Header.Currency.AED" id="currency-AED" rel="nofollow" target="_top">
+     AED
+     <em>
+      United Arab Emirates, Dirhams
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.CNY" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=CNY&amp;rfrr=Header.Currency.CNY" id="currency-CNY" rel="nofollow" target="_top">
+     CNY
+     <em>
+      China, Yuan Renminbi
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.COP" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=COP&amp;rfrr=Header.Currency.COP" id="currency-COP" rel="nofollow" target="_top">
+     COP
+     <em>
+      Colombia, Pesos
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.EGP" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=EGP&amp;rfrr=Header.Currency.EGP" id="currency-EGP" rel="nofollow" target="_top">
+     EGP
+     <em>
+      Egypt, Pounds
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.MXN" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=MXN&amp;rfrr=Header.Currency.MXN" id="currency-MXN" rel="nofollow" target="_top">
+     MXN
+     <em>
+      Mexico, Pesos
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.SAR" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=SAR&amp;rfrr=Header.Currency.SAR" id="currency-SAR" rel="nofollow" target="_top">
+     SAR
+     <em>
+      Saudi Arabia, Riyals
+     </em>
+    </a>
+   </li>
+   <li>
+    <a "="" data-omniture-id="Header.Currency.ZAR" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=ZAR&amp;rfrr=Header.Currency.ZAR" id="currency-ZAR" rel="nofollow" target="_top">
+     ZAR
+     <em>
+      South African, Rand
+     </em>
+    </a>
+   </li>
+  </ul>
+ </div>
+</li>
+<li id="language-link-2058">
+ <a class="nav-tab" data-onclick="xp.nav.trackAnalyticsLanguageLinkWithLangID('Header.LanguageLink','2058');langRedirectionUrl(this);return false;" href="/?langid=2058" id="header-language-2058" rel="nofollow" target="_top">
+  Español
+ </a>
+</li>
+<li id="language-link-2052">
+ <a class="nav-tab" data-onclick="xp.nav.trackAnalyticsLanguageLinkWithLangID('Header.LanguageLink','2052');langRedirectionUrl(this);return false;" href="/?langid=2052" id="header-language-2052" rel="nofollow" target="_top">
+  简体中文
+ </a>
+</li>
+<li class="multi-pickers hidden" id="market-multi-picker">
+ <a class="nav-tab" data-animation="fade-in-none-out" data-classes="custom-modal-class" data-control="modal" data-js-theme="default" data-modal-id="market-picker-modal" data-title="" href="#market-multi-picker-modal" id="onPageModalLink02">
+  <span class="flag us">
+  </span>
+ </a>
+ <div class="hidden" id="market-multi-picker-modal">
+  <div class="multi-picker-list-container">
+   <section class="segmented-list cf">
+    <header class="segment segment-title no-target">
+     <button class="btn-close modal-close btn-primary" type="button">
+      <span aria-hidden="true" class="icon icon-close">
+      </span>
+      <span class="alt">
+       Close
+      </span>
+     </button>
+     <h5 class="title-main">
+      Country
+     </h5>
+    </header>
+    <div class="alert alert-info with-close-btn" id="alert11" role="alert">
+     <span aria-hidden="true" class="icon icon-info">
+     </span>
+     <div class="alert-message">
+      Changing the country from which you shop may affect factors such as available products (cars, activities, etc.), inventory, price, deals, currency and language
+     </div>
+    </div>
+    <div class="subHeader suggested-header hidden">
+     Suggested
+    </div>
+    <article class="segment no-target suggested-market">
+    </article>
+    <div class="subHeader">
+     All
+    </div>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.ar" title="Expedia.com.ar">
+      <div class="flag ar">
+       Argentina
+      </div>
+      Argentina
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.au" title="Expedia.com.au">
+      <div class="flag au">
+       Australia
+      </div>
+      Australia
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.at" title="Expedia.at">
+      <div class="flag at">
+       Austria
+      </div>
+      Austria
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.be" title="Expedia.be">
+      <div class="flag be">
+       Belgium
+      </div>
+      Belgium
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.br" title="Expedia.com.br">
+      <div class="flag br">
+       Brazil
+      </div>
+      Brazil
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.ca" title="Expedia.ca">
+      <div class="flag ca">
+       Canada
+      </div>
+      Canada
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia-cn.com" title="Expedia-cn.com">
+      <div class="flag cn">
+       China
+      </div>
+      China
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.dk" title="Expedia.dk">
+      <div class="flag dk">
+       Denmark
+      </div>
+      Denmark
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.fi" title="Expedia.fi">
+      <div class="flag fi">
+       Finland
+      </div>
+      Finland
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4404" rel="nofollow" title="Chile">
+      <div class="flag cl">
+       flagChile
+      </div>
+      Chile
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4405" rel="nofollow" title="Colombia">
+      <div class="flag co">
+       flagColombia
+      </div>
+      Colombia
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4407" rel="nofollow" title="Costa Rica">
+      <div class="flag cr">
+       flagCostaRica
+      </div>
+      CostaRica
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4406" rel="nofollow" title="Egypt">
+      <div class="flag eg">
+       flagEgypt
+      </div>
+      Egypt
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://euro.expedia.net" title="Euro">
+      <div class="flag eu">
+       flagEuroCatch-All
+      </div>
+      Euro
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4403" rel="nofollow" title="Peru">
+      <div class="flag pe">
+       flagPeru
+      </div>
+      Peru
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4402" rel="nofollow" title="Saudi Arabia">
+      <div class="flag sa">
+       flagSaudiArabia
+      </div>
+      Saudi Arabia
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com/?siteid=4401" rel="nofollow" title="UAE">
+      <div class="flag ae">
+       flagUAE
+      </div>
+      UAE
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.fr" title="Expedia.fr">
+      <div class="flag fr">
+       France
+      </div>
+      France
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.de" title="Expedia.de">
+      <div class="flag de">
+       Germany
+      </div>
+      Germany
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.hk" title="Expedia.com.hk">
+      <div class="flag hk">
+       Hong Kong
+      </div>
+      Hong Kong
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.in" title="Expedia.co.in">
+      <div class="flag in">
+       India
+      </div>
+      India
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.id" title="Expedia.co.id">
+      <div class="flag ind">
+       Indonesia
+      </div>
+      Indonesia
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.ie" title="Expedia.ie">
+      <div class="flag ie">
+       Ireland
+      </div>
+      Ireland
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.it" title="Expedia.it">
+      <div class="flag it">
+       Italy
+      </div>
+      Italy
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.jp" title="Expedia.co.jp">
+      <div class="flag jp">
+       Japan
+      </div>
+      Japan
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.kr" title="Expedia.co.kr">
+      <div class="flag kr">
+       Korea
+      </div>
+      Korea
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.my" title="Expedia.com.my">
+      <div class="flag my">
+       Malaysia
+      </div>
+      Malaysia
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.mx" title="Expedia.mx">
+      <div class="flag mx">
+       Mexico
+      </div>
+      Mexico
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.nl" title="Expedia.nl">
+      <div class="flag nl">
+       Netherlands
+      </div>
+      Netherlands
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.nz" title="Expedia.co.nz">
+      <div class="flag nz">
+       New Zealand
+      </div>
+      New Zealand
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.no" title="Expedia.no">
+      <div class="flag no">
+       Norway
+      </div>
+      Norway
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.ph" title="Expedia.com.ph">
+      <div class="flag ph">
+       Philippines
+      </div>
+      Philippines
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.sg" title="Expedia.com.sg">
+      <div class="flag sg">
+       Singapore
+      </div>
+      Singapore
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.es" title="Expedia.es">
+      <div class="flag es">
+       Spain
+      </div>
+      Spain
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.se" title="Expedia.se">
+      <div class="flag se">
+       Sweden
+      </div>
+      Sweden
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.ch" title="Expedia.ch">
+      <div class="flag ch">
+       Switzerland
+      </div>
+      Switzerland
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.tw" title="Expedia.com.tw">
+      <div class="flag tw">
+       Taiwan
+      </div>
+      Taiwan
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.th" title="Expedia.co.th">
+      <div class="flag th">
+       Thailand
+      </div>
+      Thailand
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.co.uk" title="Expedia.co.uk">
+      <div class="flag uk">
+       United Kingdom
+      </div>
+      United Kingdom
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target selected">
+     <a href="https://www.expedia.com" title="Expedia.com">
+      <div class="flag us">
+       United States
+      </div>
+      United States
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a href="https://www.expedia.com.vn" title="Expedia.com.vn">
+      <div class="flag vn">
+       Vietnam
+      </div>
+      Vietnam
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+   </section>
+  </div>
+ </div>
+</li>
+<li class="multi-pickers hidden" id="currency-multi-picker">
+ <a class="nav-tab" data-animation="fade-in-none-out" data-classes="custom-modal-class" data-control="modal" data-js-theme="default" data-modal-id="currency-picker-modal" href="#currency-multi-picker-modal" id="onPageModalLink01">
+  <span id="multiCurrencyMenuText">
+  </span>
+ </a>
+ <div class="hidden custom-modal-class" id="currency-multi-picker-modal">
+  <div class="multi-picker-list-container">
+   <section class="segmented-list cf">
+    <header class="segment segment-title no-target">
+     <button class="btn-close modal-close btn-primary" type="button">
+      <span aria-hidden="true" class="icon icon-close">
+      </span>
+      <span class="alt">
+       Close
+      </span>
+     </button>
+     <h5 class="title-main">
+      Currency
+     </h5>
+    </header>
+    <div class="subHeader suggested-header hidden">
+     Suggested
+    </div>
+    <article class="segment no-target suggested-currency">
+    </article>
+    <div class="subHeader">
+     All
+    </div>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.USD" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=USD&amp;rfrr=Header.Currency.USD" id="currency-USD" rel="nofollow" target="_top">
+      <b class="symbol">
+       $
+      </b>
+      USD
+      <span>
+       US Dollar
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.AED" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=AED&amp;rfrr=Header.Currency.AED" id="currency-AED" rel="nofollow" target="_top">
+      <b class="symbol">
+       د.إ
+      </b>
+      AED
+      <span>
+       United Arab Emirates, Dirhams
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.CLP" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=CLP&amp;rfrr=Header.Currency.CLP" id="currency-CLP" rel="nofollow" target="_top">
+      <b class="symbol">
+       $
+      </b>
+      CLP
+      <span>
+       Chile, Pesos
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.CNY" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=CNY&amp;rfrr=Header.Currency.CNY" id="currency-CNY" rel="nofollow" target="_top">
+      <b class="symbol">
+       ¥
+      </b>
+      CNY
+      <span>
+       China, Yuan Renminbi
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.COP" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=COP&amp;rfrr=Header.Currency.COP" id="currency-COP" rel="nofollow" target="_top">
+      <b class="symbol">
+       $
+      </b>
+      COP
+      <span>
+       Colombia, Pesos
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.EGP" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=EGP&amp;rfrr=Header.Currency.EGP" id="currency-EGP" rel="nofollow" target="_top">
+      <b class="symbol">
+       E£
+      </b>
+      EGP
+      <span>
+       Egypt, Pounds
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.MXN" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=MXN&amp;rfrr=Header.Currency.MXN" id="currency-MXN" rel="nofollow" target="_top">
+      <b class="symbol">
+       $
+      </b>
+      MXN
+      <span>
+       Mexico, Pesos
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.PEN" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=PEN&amp;rfrr=Header.Currency.PEN" id="currency-PEN" rel="nofollow" target="_top">
+      <b class="symbol">
+       S/.
+      </b>
+      PEN
+      <span>
+       Peru, Peruvian Soles
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.SAR" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=SAR&amp;rfrr=Header.Currency.SAR" id="currency-SAR" rel="nofollow" target="_top">
+      <b class="symbol">
+       ر.س
+      </b>
+      SAR
+      <span>
+       Saudi Arabia, Riyals
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a data-omniture-id="Header.Currency.ZAR" data-onclick="currencyRedirectionUrl(this);return false;" href="/?currency=ZAR&amp;rfrr=Header.Currency.ZAR" id="currency-ZAR" rel="nofollow" target="_top">
+      <b class="symbol">
+       R
+      </b>
+      ZAR
+      <span>
+       South African Rand
+      </span>
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+   </section>
+  </div>
+ </div>
+</li>
+<li class="multi-pickers hidden" id="lang-multi-picker">
+ <a class="nav-tab" data-animation="fade-in-none-out" data-classes=" custom-modal-class" data-control="modal" data-js-theme="default" data-modal-id="lang-picker-modal" href="#lang-multi-picker-modal" id="onPageModalLink03">
+  <span id="multiLangMenuText">
+  </span>
+ </a>
+ <div class="hidden custom-modal-class" id="lang-multi-picker-modal">
+  <div class="multi-picker-list-container">
+   <section class="segmented-list cf">
+    <header class="segment segment-title no-target">
+     <button class="btn-close modal-close btn-primary" type="button">
+      <span aria-hidden="true" class="icon icon-close">
+      </span>
+      <span class="alt">
+       Close
+      </span>
+     </button>
+     <h5 class="title-main">
+      Language
+     </h5>
+    </header>
+    <article class="segment no-target">
+     <a class="nav-tab" data-onclick="langRedirectionUrl(this);return false;" href="/?langid=1033" id="header-language-1033" rel="nofollow" target="_top">
+      English
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a class="nav-tab" data-onclick="langRedirectionUrl(this);return false;" href="/?langid=2058" id="header-language-2058" rel="nofollow" target="_top">
+      Español
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+    <article class="segment no-target">
+     <a class="nav-tab" data-onclick="langRedirectionUrl(this);return false;" href="/?langid=2052" id="header-language-2052" rel="nofollow" target="_top">
+      简体中文
+      <span aria-hidden="true" class="icon icon-success">
+      </span>
+     </a>
+    </article>
+   </section>
+  </div>
+ </div>
+</li>
+<!-- /.site-navigation -->
+<!-- /.cols-row role="banner" -->
+<span class="visuallyhidden">
+ For customer service, call us toll-free at 1-800-397-3342. For customers outside the US, please call 1-404-728-8787. International calling rates will apply.
+</span>
+<!-- /.site-header -->
+<div class="site-header site-header-secondary site_1 en_US b2p-yellow-header" role="navigation">
+ <div class="cols-row">
+  <!-- home -->
+  <div class="site-navigation all-in cf">
+   <ul class="utility-nav nav-group cf" data-selected-text="Currently selected">
+    <li id="all-in-flight-header-link">
+     <a data-omniture-id="Header.Flights" data-route="/Flights" href="/Flights" id="primary-header-flight" target="_top">
+      Flights
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li id="all-in-hotel-header-link">
+     <a data-omniture-id="Header.Hotels" data-route="/Hotels" href="/Hotels" id="primary-header-hotel" target="_top">
+      Hotels
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li id="all-in-package-header-link">
+     <a data-omniture-id="Header.VacationPackages" data-route="/Vacation-Packages" href="/Vacation-Packages" id="primary-header-package" target="_top">
+      Bundle and Save
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li id="all-in-car-header-link">
+     <a data-omniture-id="Header.Cars" data-route="/Cars" href="/Cars" id="primary-header-car" target="_top">
+      Cars
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li id="all-in-cruise-header-link">
+     <a data-omniture-id="Header.Cruises" data-route="/Cruises" href="/Cruises" id="primary-header-cruise" target="_top">
+      Cruises
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li id="all-in-activity-header-link">
+     <a data-omniture-id="Header.ThingsToDo" data-route="/Activities" href="/Activities" id="primary-header-activity" target="_top">
+      Things to Do
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li class="all-in-full" id="all-in-events-header-link">
+     <a data-omniture-id="Header.Events" data-route="/event-tickets/?rfrr=3PT.EventTickets.GCTab&amp;utm_source=expedia_header&amp;utm_medium=event_tickets&amp;utm_campaign=expedia_header_event_tickets_tab" href="/event-tickets/?rfrr=3PT.EventTickets.GCTab&amp;utm_source=expedia_header&amp;utm_medium=event_tickets&amp;utm_campaign=expedia_header_event_tickets_tab" id="primary-header-events" target="_top">
+      Event Tickets
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li id="all-in-discover-header-link">
+     <a data-omniture-id="Header.open-search" data-route="/search-results?rfrr=headermenu" href="/search-results?rfrr=headermenu" id="primary-header-discover" target="_top">
+      Discover
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li class="all-in-full" id="all-in-vacationRental-header-link">
+     <a data-omniture-id="Header.VacationRentals" data-route="/vacation-rentals/" href="/vacation-rentals/" id="primary-header-vacationRental" target="_top">
+      Vacation Rentals
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li class="all-in-full" id="all-in-deals-header-link">
+     <a data-omniture-id="Header.Deals" data-route="/Deals" href="/Deals" id="primary-header-deals" target="_top">
+      Deals
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li class="all-in-full" id="all-in-rewards-header-link">
+     <a data-omniture-id="Header.Rewards" data-route="/user/expediarewards" href="/user/expediarewards" id="primary-header-rewards" target="_top">
+      Rewards
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li class="all-in-full" id="all-in-mobile-header-link">
+     <a data-omniture-id="Header.MobileApp" data-route="/app" href="/app" id="primary-header-mobile" target="_top">
+      Mobile
+      <span class="visuallyhidden selected-label">
+      </span>
+     </a>
+    </li>
+    <li class="all-in-collapsed" id="all-in-shop-menu-link">
+     <a class="nav-tab" data-control="menu" data-onclick="return false;" data-tid="header-shop-menu" href="#more-shop-menu" id="all-in-header-shop-menu" target="_top">
+      More
+      <span class="icon icon-toggle180">
+      </span>
+     </a>
+     <div class="menu">
+      <ul>
+       <li>
+        <a data-omniture-id="Header.Events" data-route="/event-tickets/?rfrr=3PT.EventTickets.GCTab&amp;utm_source=expedia_header&amp;utm_medium=event_tickets&amp;utm_campaign=expedia_header_event_tickets_tab" href="/event-tickets/?rfrr=3PT.EventTickets.GCTab&amp;utm_source=expedia_header&amp;utm_medium=event_tickets&amp;utm_campaign=expedia_header_event_tickets_tab" id="header-account-events-more-menu" target="_top">
+         Event Tickets
+        </a>
+       </li>
+       <li>
+        <a data-omniture-id="Header.VacationRentals" data-route="/vacation-rentals/" href="/vacation-rentals/" id="header-account-vacationRental-more-menu" target="_top">
+         Vacation Rentals
+        </a>
+       </li>
+       <li>
+        <a data-omniture-id="Header.Deals" data-route="/Deals" href="/Deals" id="header-account-deals-more-menu" target="_top">
+         Deals
+        </a>
+       </li>
+       <li>
+        <a data-omniture-id="Header.Rewards" data-route="/user/expediarewards" href="/user/expediarewards" id="header-account-rewards-more-menu" target="_top">
+         Rewards
+        </a>
+       </li>
+       <li>
+        <a data-omniture-id="Header.MobileApp" data-route="/app" href="/app" id="header-account-mobile-more-menu" target="_top">
+         Mobile
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+   </ul>
+  </div>
+  <!-- /.site-navigation all-in -->
+  <!-- end if block for !model.isBlank -->
+ </div>
+ <!-- /.cols-row role="banner" -->
+</div>
+<!-- /.site-header -->
+<!-- To help detect bot traffic -->
+<link href="/cgp/simple/uitk.styles" media="print" rel="stylesheet" type="text/css"/>
+<div class="visuallyhidden" id="skip-nav-anchor">
+ Beginning of main content
+</div>
+<div data-gss-modal-version="1.0.93 static" style="display: none;">
+</div>
+<div id="gss-modal-main-container">
+ <input id="gss-interstitial-aria-msg" type="hidden" value="Loading..."/>
+ <input id="gss-fb-app-id" type="hidden" value="131538103586818"/>
+ <div class="visuallyhidden modal-view-full" data-hero-img-enabled="false" id="gss-signup-view">
+  <div aria-level="2" class="visuallyhidden" id="gss-signup-title" role="heading" tabindex="0">
+   Create an account
+  </div>
+  <div class="gss-rectangle gss-mobile-only hero-banner-img" tabindex="1">
+   <div class="gss-rectangle-header" tabindex="1">
+    <h2 class="gss-mobile-only">
+     Create your free account
+    </h2>
+   </div>
+  </div>
+  <div class="cols-row group-col columns-container modal-height">
+   <div class="col gss-hero-left-col gss-not-responsive">
+    <div class="gss-rectangle gss-not-responsive">
+     <div class="gss-rectangle-header" tabindex="1">
+      <h2 class="gss-not-responsive">
+       Create your free account
+      </h2>
+     </div>
+    </div>
+    <img src=""/>
+   </div>
+   <div class="col gss-hero-right-col">
+    <div class="col gss-col-12 gss-util-padding-vert-top18 gss-align-center">
+     <div class="cols-row">
+      <button class="btn-primary btn-sub-action gss-col-12 type-300 facebook-button" id="gss-signup-login-facebook-button" tabindex="0" type="submit">
+       <span class="btn-label facebook-button-text">
+        <span class="icon facebook-icon">
+        </span>
+        Sign Up with Facebook
+       </span>
+      </button>
+     </div>
+     <div class="cols-row hidden" id="googleSignUpDiv">
+      <form action="/user/connect/google" id="googleSignUpform" method="post" target="google-auth-window">
+       <button class="btn-primary btn-sub-action gss-col-12 type-300 social-button google" id="gss-signup-login-google-button" tabindex="0" type="submit">
+        <span class="icon social-icon">
+        </span>
+        <span class="btn-label">
+         Sign Up with Google
+        </span>
+       </button>
+      </form>
+     </div>
+     <div class="cols-row hidden" id="naverSignUpDiv">
+      <form action="/user/connect/naver" id="naverSignUpform" method="post" target="naver-auth-window">
+       <button class="btn-primary btn-sub-action gss-col-12 type-300 social-button naver" id="gss-signup-login-naver-button" tabindex="0" type="submit">
+        <span class="icon social-icon">
+        </span>
+        <span class="btn-label">
+         Sign Up with Naver
+        </span>
+       </button>
+      </form>
+     </div>
+     <div class="cols-row gss-align-left">
+      <div class="col gss-col-12">
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error gss-social-login-error-message visuallyhidden" id="gss-social-login-signUp-error" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        <span>
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding gss-align-center signup-or-separator">
+      <div class="signup-or-separator--text">
+       <strong class="type-300">
+        OR
+       </strong>
+      </div>
+      <hr/>
+     </div>
+    </div>
+    <fieldset>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden" id="gss-signup-error-message" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        We apologize for our system failure. Please try again
+       </div>
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden" id="gss-signup-duplicate-email" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        Account already exists
+       </div>
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden " id="gss-signup-authentication-failed" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        Authentication failure. Please try again
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error unregistered-softaccount visuallyhidden" id="gss-signup-unregistered-account-exists" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        <span class="unregistered-softaccount-exists-action">
+         Action required!
+        </span>
+        <br/>
+        <span class="unregistered-softaccount-exists-email">
+         To finish creating your account, please click the link we just sent to
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-06">
+       <label class="text" for="gss-signup-first-name" id="gss-signup-first-name-label">
+        <span class="label">
+         First name
+        </span>
+        <input aria-describedby="signUpFirstNameError" aria-label="First name" aria-required="true" data-validation-msg="First name required" id="gss-signup-first-name" name="signup-first-name" placeholder="" type="text"/>
+        <p aria-hidden="true" class="uitk-validation-error visuallyhidden" id="signUpFirstNameError" role="alert">
+        </p>
+       </label>
+      </div>
+      <div class="col gss-col-06">
+       <label class="text" for="gss-signup-last-name" id="gss-signup-last-name-label">
+        <span class="label">
+         Last name
+        </span>
+        <input aria-describedby="signUpLastNameError" aria-label="Last name" aria-required="true" data-validation-msg="Last name required" id="gss-signup-last-name" name="signup-last-name" placeholder="" type="text"/>
+        <p aria-hidden="true" class="uitk-validation-error visuallyhidden" id="signUpLastNameError" role="alert">
+        </p>
+       </label>
+      </div>
+     </div>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <label class="text" for="gss-signup-email" id="gss-signup-email-label">
+        <span class="label">
+         Email address
+        </span>
+        <input aria-describedby="signUpEmailErrorMessage" aria-label="Email address" aria-required="true" data-invalid-format-validation-msg="Please enter a valid email address" data-is-email="true" data-validation-msg="Please enter an email address" id="gss-signup-email" name="signup-loginid" type="email"/>
+        <p aria-hidden="true" class="uitk-validation-error visuallyhidden" id="signUpEmailErrorMessage" role="alert">
+        </p>
+        <span aria-hidden="true" class="uitk-validation-error visuallyhidden" id="gss-signup-email-already-connected-to-thirdparty" role="alert">
+         This email has already been used to sign up with CONNECTED_THIRD_PARTY_NAMES. Try signing in with CONNECTED_THIRD_PARTY_NAMES or use another email address.
+        </span>
+       </label>
+      </div>
+     </div>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <div class="input-btn-group password-lock">
+        <label class="text password-discoverable-label" for="gss-signup-password">
+         <span class="label">
+          Create a password
+         </span>
+         <input aria-describedby="signUpPasswordErrorMessage" aria-label="" autocapitalize="none" autocomplete="off" class="clear-btn-input" data-validation-msg="Please enter a password" id="gss-signup-password" placeholder="at least 6 characters" spellcheck="false" type="text">
+          <p class="uitk-validation-error" id="signUpPasswordErrorMessage">
+          </p>
+         </input>
+        </label>
+        <button aria-label="Show or Hide Password" class="btn gss-btn-clear password-discoverable" id="gss-signup-password-icon-button" type="button">
+         <span class="btn-label">
+          <span aria-hidden="true" class="icon icon-lock" id="gss-signup-password-icon">
+          </span>
+         </span>
+        </button>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row .gss-util-padding-vert-top09" id="gss-join-program">
+      <div class="col gss-col-12">
+       <div class="gss-loyalty-check-box">
+        <label class="check" for="gss-join-program-check" id="gss-join-program-check-label">
+         <input aria-label="Join Expedia Rewards. By joining I accept all terms and conditions." class="check" id="gss-join-program-check" name="gss-join-program-check" type="checkbox">
+          <span class="inline-label" id="gss-loyalty-checkbox-label">
+           Join
+           <a href="/rewards/howitworks" target="_blank">
+            Expedia Rewards.
+            <span class="visuallyhidden">
+             opens in a new window
+            </span>
+           </a>
+           By joining I accept all
+           <a href="/rewards/terms" target="_blank">
+            terms and conditions.
+            <span class="visuallyhidden">
+             opens in a new window
+            </span>
+           </a>
+          </span>
+         </input>
+        </label>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding gss-util-padding-vert-top18">
+      <div class="col gss-col-12">
+       <span aria-hidden="true" class="loader loader-primary loader-light loader-animated loading" id="gss-signup-interstitial" title="">
+       </span>
+       <button aria-label="Sign Up" class="btn-primary btn-action gss-col-12 initial-fade" id="gss-signup-submit" type="submit">
+        <span class="btn-label">
+         Sign Up
+        </span>
+       </button>
+      </div>
+     </div>
+     <div class="cols-row gss-util-padding-vert-top09">
+      <div class="col gss-col-12" tabindex="0">
+       <div class="type-100">
+        By creating an account, I agree to the
+        <a href="/terms" target="_blank">
+         Terms of Use
+         <span class="visuallyhidden">
+          opens in a new window
+         </span>
+        </a>
+        and the
+        <a href="/privacy" target="_blank">
+         Privacy Policy
+         <span class="visuallyhidden">
+          opens in a new window
+         </span>
+        </a>
+        .
+       </div>
+       <p class="uitk-validation-error visuallyhidden" id="signUpTermsAndConditionsErrorMessage">
+       </p>
+      </div>
+     </div>
+     <div class="cols-row gss-align-table">
+      <div class="text-center gss-align-table-cell gss-brand-name">
+       <div aria-label="Already have an account?" class="type-200" tabindex="0">
+        Already have an account?
+       </div>
+      </div>
+      <div class="gss-align-table-cell">
+       <button aria-label="Sign In" class="btn-primary btn-utility type-200 right go-to-button" id="gss-goto-signin" type="submit">
+        <span class="btn-label">
+         Sign In
+        </span>
+       </button>
+      </div>
+     </div>
+    </fieldset>
+   </div>
+   <div style="clear: both">
+   </div>
+  </div>
+ </div>
+ <div class="visuallyhidden modal-view-full" data-hero-img-enabled="false" id="gss-signin-view">
+  <div aria-level="2" class="visuallyhidden" id="gss-signin-title" role="heading" tabindex="0">
+   Sign In
+  </div>
+  <div class="gss-rectangle gss-mobile-only hero-banner-img" tabindex="1">
+   <div class="gss-rectangle-header" tabindex="1">
+    <h2 class="gss-mobile-only">
+     Sign in to your account
+    </h2>
+   </div>
+  </div>
+  <div class="cols-row group-col modal-height columns-container">
+   <div class="col gss-hero-left-col gss-not-responsive">
+    <div class="gss-rectangle gss-not-responsive">
+     <div class="gss-rectangle-header" tabindex="1">
+      <h2 class="gss-not-responsive">
+       Sign in to your account
+      </h2>
+     </div>
+    </div>
+    <img src=""/>
+   </div>
+   <div class="gss-hero-right-col col-height">
+    <div class="col gss-col-12 gss-util-padding-vert-top18 gss-align-center">
+     <div class="cols-row">
+      <button aria-label="Sign In with Facebook" class="btn-primary btn-sub-action gss-col-12 type-300 facebook-button" id="gss-signin-login-facebook-button" tabindex="0" type="submit">
+       <span class="btn-label facebook-button-text">
+        <span class="icon facebook-icon">
+        </span>
+        Sign In with Facebook
+       </span>
+      </button>
+     </div>
+     <div class="cols-row hidden" id="googleSignInDiv">
+      <form action="/user/connect/google" id="googleSignInform" method="post" target="google-auth-window">
+       <button aria-label="Sign In with Google" class="btn-primary btn-sub-action gss-col-12 type-300 social-button google" id="gss-signin-login-google-button" tabindex="0" type="submit">
+        <span class="icon social-icon">
+        </span>
+        <span class="btn-label">
+         Sign In with Google
+        </span>
+       </button>
+      </form>
+     </div>
+     <div class="cols-row hidden" id="naverSignInDiv">
+      <form action="/user/connect/naver" id="naverSignInform" method="post" target="naver-auth-window">
+       <button aria-label="Sign In with Naver" class="btn-primary btn-sub-action gss-col-12 type-300 social-button naver" id="gss-signin-login-naver-button" tabindex="0" type="submit">
+        <span class="icon social-icon">
+        </span>
+        <span class="btn-label">
+         Sign In with Naver
+        </span>
+       </button>
+      </form>
+     </div>
+     <div class="cols-row gss-align-left">
+      <div class="col gss-col-12">
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error gss-social-login-error-message visuallyhidden" id="gss-social-login-signIn-error" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        <span>
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding gss-align-center signup-or-separator">
+      <div class="signup-or-separator--text">
+       <strong class="type-300">
+        OR
+       </strong>
+      </div>
+      <hr/>
+     </div>
+    </div>
+    <fieldset class="no-padding">
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden " id="gss-signin-error-message" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        We apologize for our system failure. Please try again
+       </div>
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden " id="gss-signin-incorrect-email-or-password" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        You may have entered an unknown email address or an incorrect password
+       </div>
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden " id="gss-signin-authentication-failed" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        Authentication failure. Please try again
+       </div>
+       <div aria-hidden="true" class="cols-row no-padding uitk-validation-error visuallyhidden " id="gss-signin-system-reset-password" role="alert">
+        <span class="icon icon-warn">
+        </span>
+        The security of your account is important to us. We have reset your password to keep your account secure. Please use the “forgot password” link to set a new password.
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <label class="text" for="gss-signin-email" id="login-form-email-label">
+        <span class="label">
+         Email address
+        </span>
+        <input aria-describedby="signInEmailErrorMessage" aria-label="Email address" aria-required="true" autocomplete="off" data-invalid-format-validation-msg="Please enter a valid email address" data-is-email="true" data-validation-msg="Please enter an email address" id="gss-signin-email" name="signin-loginid" type="email"/>
+        <p aria-hidden="true" class="uitk-validation-error visuallyhidden" id="signInEmailErrorMessage" role="alert">
+        </p>
+       </label>
+      </div>
+     </div>
+     <div class="cols-row no-padding">
+      <div class="col gss-col-12">
+       <div class="input-btn-group password-lock">
+        <label class="text password-discoverable-label" for="gss-signin-password">
+         <span class="label">
+          Password
+         </span>
+         <input aria-describedby="signInPasswordErrorMessage" aria-label="" autocapitalize="none" autocomplete="off" class="clear-btn-input" data-validation-msg="Please enter a password" id="gss-signin-password" spellcheck="false" type="text">
+          <p class="uitk-validation-error" id="signInPasswordErrorMessage">
+          </p>
+         </input>
+        </label>
+        <button aria-label="Show or Hide Password" class="btn gss-btn-clear password-discoverable" id="gss-signin-password-icon-button" type="button">
+         <span class="btn-label">
+          <span aria-hidden="true" class="icon icon-lock" id="gss-signin-password-icon">
+          </span>
+         </span>
+        </button>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row">
+      <div class="col gss-col-06 text-center" id="keep-signed-in-container">
+       <label class="remove-margin check" for="gss-keep-signin-check" id="gss-keep-signin-check-label">
+        <input aria-label="Keep me signed in" checked="" id="gss-keep-signin-check" name="gss-keep-signin-check" type="checkbox" value="a"/>
+        <span class="inline-label">
+         Keep me signed in
+        </span>
+        <input id="gss-gdpr-pos" type="hidden" value="false">
+        </input>
+       </label>
+      </div>
+      <div class="col gss-col-06 text-center right" id="forgot-password-container">
+       <a aria-label="Forgot password?" class="link type-200 initial-fade" href="javascript: void(0);" id="gss-go-to-forgot-password">
+        Forgot password?
+       </a>
+      </div>
+     </div>
+     <div class="cols-row .gss-util-padding-vert-top09 hidden" id="gss-signin-join-program">
+      <div class="col gss-col-12">
+       <div class="gss-loyalty-check-box">
+        <label class="check" for="gss-signin-join-program-check" id="gss-join-program-check-label">
+         <input class="check" id="gss-signin-join-program-check" name="gss-join-program-check" type="checkbox">
+          <span class="inline-label" id="gss-loyalty-checkbox-label">
+           Join
+           <a href="/rewards/howitworks" target="_blank">
+            Expedia Rewards
+           </a>
+           . By joining I accept all
+           <a href="/rewards/terms" target="_blank">
+            terms and conditions
+           </a>
+           .
+          </span>
+         </input>
+        </label>
+       </div>
+      </div>
+     </div>
+     <div class="cols-row no-padding gss-util-padding-vert-top18">
+      <div class="col gss-col-12">
+       <span aria-hidden="true" class="loader loader-primary loader-light loader-animated loading" id="gss-signin-interstitial" title="">
+       </span>
+       <button aria-label="Sign In" class="btn-primary btn-action gss-col-12 initial-fade" id="gss-signin-submit" type="submit">
+        <span class="btn-label">
+         Sign In
+        </span>
+       </button>
+      </div>
+     </div>
+     <div class="cols-row gss-align-table">
+      <div class="text-center gss-align-table-cell gss-brand-name">
+       <div aria-label="Need an account?" class="type-200" tabindex="0">
+        Need an account?
+       </div>
+      </div>
+      <div class="gss-align-table-cell">
+       <button aria-label="Sign Up" class="btn-primary btn-utility type-200 right go-to-button" id="gss-goto-signup" type="submit">
+        <span class="btn-label">
+         Sign Up
+        </span>
+       </button>
+      </div>
+     </div>
+     <form enctype="application/x-www-form-urlencoded" method="post" name="gss-signin-captcha">
+      <input name="signin-loginid" type="hidden" value=""/>
+      <input name="signin-password" type="hidden" value=""/>
+      <input name="checkbox-gss-keep-signing" type="hidden" value=""/>
+      <input name="csrfTokenL" type="hidden" value=""/>
+      <input name="uurl" type="hidden" value=""/>
+     </form>
+    </fieldset>
+   </div>
+   <div style="clear: both">
+   </div>
+  </div>
+ </div>
+ <div id="gss-deferred-content">
+ </div>
+</div>
+<div class="site-content-wrap">
+ <div id="formcontainer">
+  <div id="pageHeader">
+   Show us your human side...
+  </div>
+  <div id="cardText">
+   We can't tell if you're a human or a bot.
+  </div>
+  <form action="/botOrNot/verify" id="verifyButton">
+   <div class="g-recaptcha" data-sitekey="6LdopwsUAAAAAJPA9Ku3yxEhZ2N0b-3acJG963IZ" data-theme="dark">
+   </div>
+   <input name="destination" type="hidden" value="L0ZsaWdodHMtU2VhcmNoP3RyaXA9b25ld2F5JmxlZzE9ZnJvbSUzQUJvc3RvbiUyQyUyME1BJTJDJTIwVW5pdGVkJTIwU3RhdGVzJTIwKEJPUyklMkN0byUzQVJhbGVpZ2glMkMlMjBOQyUyQyUyMFVuaXRlZCUyMFN0YXRlcyUyMChSRFUpJTJDZGVwYXJ0dXJlJTNBMTIlMkYxMCUyRjIwMThUQU5ZVCZwYXNzZW5nZXJzPWFkdWx0cyUzQTElMkNjaGlsZHJlbiUzQTAlMkNzZW5pb3JzJTNBMCUyQ2luZmFudGlubGFwJTNBWSZvcHRpb25zPWNhYmluY2xhc3MlM0FlY29ub215Jm1vZGU9c2VhcmNoJm9yaWdyZWY9d3d3LmV4cGVkaWEuY29t"/>
+   <button class="btn-primary btn-action" type="submit">
+    <span class="btn-label">
+     I'm human
+    </span>
+   </button>
+  </form>
+ </div>
+</div>
+<!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/footer-wrap-open.html -->
+<div class="site-footer-background" data-global-control="footer" id="site-footer-background">
+ <div class="site-footer-wrap cols-nested" id="site-footer-wrap">
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/partner-add-hotel.html -->
+  <div class="partner-add-hotel-show-btn" id="partner-add-hotel-container">
+   <a href="https://join.expediapartnercentral.com/LangCode/{LANGID}?utm_source={POS}&amp;utm_medium=referral&amp;utm_campaign={PAGE_NAME}&amp;utm_content=footer-btn" rel="nofollow" target="_blank">
+    Add your property to Expedia
+   </a>
+  </div>
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/t2d-banner.html -->
+  <div id="mad-footer-container">
+  </div>
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/explore.html -->
+  <div class="site-footer cf sub-footer" role="contentinfo">
+   <!-- begin show bot optimized footer -->
+   <section class="segmented-list toggle open">
+    <a aria-expanded="true" ariacontrols="exploreMore" class="toggle-trigger open" data-control="toggle" data-toggle-text="exploreMore" href="#exploreMore" role="button">
+     Explore More
+     <span class="icon icon-expand">
+     </span>
+    </a>
+    <div aria-expanded="true" class="toggle-pane open" id="exploreMore" role="region">
+     <div class="toggle-inner">
+      <div class="cf">
+       <div class="links-description" id="expedia-header">
+        <h5>
+         Expedia
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="expedia-links">
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="https://www.expediagroup.com/">
+           About Expedia
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="https://lifeatexpedia.com/">
+           Jobs
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="http://ir.expediagroup.com/">
+           Investor Relations
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="https://www.advertising.expedia.com/">
+           Advertising
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="https://newsroom.expedia.com/">
+           Newsroom
+          </a>
+         </li>
+         <li>
+          <a data-onclick="window.open('/g/pt/about-ads','AboutOurAds','scrollbars=yes,status=no,toolbar=yes,resizable=yes,width=480,height=620');xp.nav.trackAnalytics(this,'a','Footer.CorporateLink');return false;" href="javascript:void(0);" rel="nofollow">
+           About Our Ads
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="/p/info-other/privacy-policy.htm">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="/p/info-other/legal.htm">
+           Terms of Use
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.CorporateLink')" href="/g/rf/sitemap">
+           Site Map
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Accessibility')" href="/p/info-other/web-accessibility-policy">
+           Accessibility
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="cf">
+       <div class="links-description" id="rewards-header">
+        <h5>
+         Expedia Rewards
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="rewards-links">
+         <li>
+          <a data-onclick="" href="/rewards/howitworks?rfrr=site.footer.CCOffer">
+           Expedia Rewards
+          </a>
+         </li>
+         <li>
+          <a data-onclick="" href="/rewards/redeem?rfrr=site.footer.CCOffer">
+           Redeem Your Points
+          </a>
+         </li>
+         <li>
+          <a data-onclick="" href="/usepartnerpoints?rfrr=site.footer.PartnerPoints">
+           Use Partner Points
+          </a>
+         </li>
+         <li>
+          <a data-onclick="" href="/rewards/vipaccess?rfrr=site.footer.CCOffer">
+           +VIP Access Hotels
+          </a>
+         </li>
+         <li>
+          <a data-onclick="" href="/rewards/credit_card?citiCode=28X&amp;rfrr=site.footer.CCOffer">
+           Expedia Rewards Credit Cards
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="cf">
+       <div class="links-description" id="brand-links-header">
+        <h5>
+         Expedia Links
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="brand-links-links">
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.losCostFlights')" href="https://flights.expedia.com/">
+           Low Cost Flights
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.rentalCarFinder')" href="https://rental-cars.expedia.com/">
+           Rental Car Finder
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.expediaRewards')" href="/rewards/howitworks">
+           Expedia Rewards
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.travelBlog')" href="https://viewfinder.expedia.com/">
+           Travel Blog
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.newHotels')" href="/g/u/newhotels">
+           New Hotels
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.accommodations')" href="/Accommodations">
+           Accommodations
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="cf">
+       <div class="links-description" id="expedia-sitemaps-header">
+        <h5>
+         Expedia Sitemaps
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="expedia-sitemaps-links">
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.hotelsSitemap')" href="/Destinations-In-United-States-Of-America.d201.Hotel-Destinations">
+           Hotels Sitemap
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.flightsSitemap')" href="/Destinations-In-United-States-Of-America.d201.Flight-Destinations">
+           Flights Sitemap
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.vacationsSitemap')" href="/United-States-Of-America.d201.Destination-Travel-Guides">
+           Vacations Sitemap
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.rentalCarsSitemap')" href="/Destinations-In-United-States-Of-America.d201.Car-Rental-Destinations">
+           Rental Cars Sitemap
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.cruisesSitemap')" href="/cruise/info/sitemap">
+           Cruises Sitemap
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.thingsToDoSitemap')" href="/Activities">
+           Things to Do Sitemap
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="cf">
+       <div class="links-description" id="partner-services-header">
+        <h5>
+         Partner Services
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="partner-services-links">
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="https://www.expediapartnercentral.com/Account/Logon?langId=1033" rel="nofollow">
+           Expedia Partner Central
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="https://join.expediapartnercentral.com" id="add-hotel-link" rel="nofollow">
+           Add a property
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="https://www.expediapartnersolutions.com" rel="nofollow">
+           Expedia Partner Solutions API
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="http://join.localexpertpartnercentral.com" rel="nofollow">
+           Add an Activity
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="/g/rf/us-affiliateslandingpage?langid=1033">
+           Become an Affiliate
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="/TAAP-LearnMore">
+           Travel Agents Affiliate Program
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="/rewards/credit_card?lytid=cb.link.footer&amp;citiCode=28X&amp;rfrr=site.footer.CCOffer">
+           Expedia Mastercard
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="https://expediafranchise.com/">
+           Expedia Franchise
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.PartnerService')" href="https://www.joinecsc.com/en-US/corporate">
+           Expedia CruiseShipCenters Agent
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="cf">
+       <div class="links-description" id="global-sites-header">
+        <h5>
+         Global Sites
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="global-sites-links">
+         <li>
+          <a class="flag ar" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.ar" title="Expedia.com.ar">
+           Argentina
+          </a>
+         </li>
+         <li>
+          <a class="flag au" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.au" title="Expedia.com.au">
+           Australia
+          </a>
+         </li>
+         <li>
+          <a class="flag at" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.at" title="Expedia.at">
+           Austria
+          </a>
+         </li>
+         <li>
+          <a class="flag be" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.be" title="Expedia.be">
+           Belgium
+          </a>
+         </li>
+         <li>
+          <a class="flag br" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.br" title="Expedia.com.br">
+           Brazil
+          </a>
+         </li>
+         <li>
+          <a class="flag ca" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.ca" title="Expedia.ca">
+           Canada
+          </a>
+         </li>
+         <li>
+          <a class="flag cn" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia-cn.com" title="Expedia-cn.com">
+           China
+          </a>
+         </li>
+         <li>
+          <a class="flag dk" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.dk" title="Expedia.dk">
+           Denmark
+          </a>
+         </li>
+         <li>
+          <a class="flag fi" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.fi" title="Expedia.fi">
+           Finland
+          </a>
+         </li>
+         <li>
+          <a class="flag cl" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4404" rel="nofollow" title="Chile">
+           flagChile
+          </a>
+         </li>
+         <li>
+          <a class="flag co" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4405" rel="nofollow" title="Colombia">
+           flagColombia
+          </a>
+         </li>
+         <li>
+          <a class="flag cr" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4407" rel="nofollow" title="Costa Rica">
+           flagCostaRica
+          </a>
+         </li>
+         <li>
+          <a class="flag eg" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4406" rel="nofollow" title="Egypt">
+           flagEgypt
+          </a>
+         </li>
+         <li>
+          <a class="flag eu" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://euro.expedia.net" title="Euro">
+           flagEuroCatch-All
+          </a>
+         </li>
+         <li>
+          <a class="flag pe" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4403" rel="nofollow" title="Peru">
+           flagPeru
+          </a>
+         </li>
+         <li>
+          <a class="flag sa" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4402" rel="nofollow" title="Saudi Arabia">
+           flagSaudiArabia
+          </a>
+         </li>
+         <li>
+          <a class="flag ae" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com/?siteid=4401" rel="nofollow" title="UAE">
+           flagUAE
+          </a>
+         </li>
+         <li>
+          <a class="flag fr" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.fr" title="Expedia.fr">
+           France
+          </a>
+         </li>
+         <li>
+          <a class="flag de" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.de" title="Expedia.de">
+           Germany
+          </a>
+         </li>
+         <li>
+          <a class="flag hk" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.hk" title="Expedia.com.hk">
+           Hong Kong
+          </a>
+         </li>
+         <li>
+          <a class="flag in" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.in" title="Expedia.co.in">
+           India
+          </a>
+         </li>
+         <li>
+          <a class="flag ind" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.id" title="Expedia.co.id">
+           Indonesia
+          </a>
+         </li>
+         <li>
+          <a class="flag ie" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.ie" title="Expedia.ie">
+           Ireland
+          </a>
+         </li>
+         <li>
+          <a class="flag it" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.it" title="Expedia.it">
+           Italy
+          </a>
+         </li>
+         <li>
+          <a class="flag jp" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.jp" title="Expedia.co.jp">
+           Japan
+          </a>
+         </li>
+         <li>
+          <a class="flag kr" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.kr" title="Expedia.co.kr">
+           Korea
+          </a>
+         </li>
+         <li>
+          <a class="flag my" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.my" title="Expedia.com.my">
+           Malaysia
+          </a>
+         </li>
+         <li>
+          <a class="flag mx" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.mx" title="Expedia.mx">
+           Mexico
+          </a>
+         </li>
+         <li>
+          <a class="flag nl" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.nl" title="Expedia.nl">
+           Netherlands
+          </a>
+         </li>
+         <li>
+          <a class="flag nz" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.nz" title="Expedia.co.nz">
+           New Zealand
+          </a>
+         </li>
+         <li>
+          <a class="flag no" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.no" title="Expedia.no">
+           Norway
+          </a>
+         </li>
+         <li>
+          <a class="flag ph" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.ph" title="Expedia.com.ph">
+           Philippines
+          </a>
+         </li>
+         <li>
+          <a class="flag sg" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.sg" title="Expedia.com.sg">
+           Singapore
+          </a>
+         </li>
+         <li>
+          <a class="flag es" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.es" title="Expedia.es">
+           Spain
+          </a>
+         </li>
+         <li>
+          <a class="flag se" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.se" title="Expedia.se">
+           Sweden
+          </a>
+         </li>
+         <li>
+          <a class="flag ch" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.ch" title="Expedia.ch">
+           Switzerland
+          </a>
+         </li>
+         <li>
+          <a class="flag tw" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.tw" title="Expedia.com.tw">
+           Taiwan
+          </a>
+         </li>
+         <li>
+          <a class="flag th" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.th" title="Expedia.co.th">
+           Thailand
+          </a>
+         </li>
+         <li>
+          <a class="flag uk" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.co.uk" title="Expedia.co.uk">
+           United Kingdom
+          </a>
+         </li>
+         <li>
+          <a class="flag us" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com" title="Expedia.com">
+           United States
+          </a>
+         </li>
+         <li>
+          <a class="flag vn" data-onclick="xp.nav.trackAnalytics(this,'a','Footer.AllSites')" href="https://www.expedia.com.vn" title="Expedia.com.vn">
+           Vietnam
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="cf">
+       <div class="links-description" id="expedia-partners-header">
+        <h5>
+         Expedia Partners
+        </h5>
+       </div>
+       <div class="links-list">
+        <ul class="brand-links" id="expedia-partners-links">
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.egencia.com/public/us/egencia-solutions/" rel="nofollow">
+           Egencia Business Travel
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.expediapartnersolutions.com" rel="nofollow">
+           Expedia Partner Solutions (EPS)
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.hotels.com/" rel="nofollow">
+           Hotels.com
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.hotwire.com/" rel="nofollow">
+           Hotwire
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="http://www.citysearch.com/" rel="nofollow">
+           CitySearch
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.hsn.com/" rel="nofollow">
+           Online Shopping
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.homeadvisor.com/" rel="nofollow">
+           HomeAdvisor
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.cruiseshipcenters.com/en-US/corporate/home" rel="nofollow">
+           Expedia CruiseShipCenters
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.carrentals.com">
+           Carrentals.com
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.homeaway.com/">
+           HomeAway
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.travelocity.com/">
+           Travelocity
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.trivago.com/">
+           Trivago
+          </a>
+         </li>
+         <li>
+          <a data-onclick="xp.nav.trackAnalytics(this,'a','Footer.Epartners'); window.open(this.href,'_blank'); return false;" href="https://www.trover.com/?utm_source=Expedia&amp;utm_campaign=Traffic&amp;utm_medium=MCH-SF-Footer/">
+           Trover
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/legal.html -->
+  <div class="legal">
+   Expedia, Inc. is not responsible for content on external Web sites. © 2018 Expedia, Inc. All rights reserved.
+  </div>
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/badges.html -->
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/copyrights.html -->
+  <!--PGC http://c.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/htmls/1/en_US/footer-wrap-close.html -->
+ </div>
+</div>
+<script async="" defer="" src="//a.travel-assets.com/globalcontrols-service/content/6ebf0b31760e51abf16f93025dfc3a02637ff63a/scripts/1/en_US/globalcontrols-min.js" type="text/javascript">
+</script>
+<script>
+ define('env', function() {return {"pageModelTimeout":3000,"airlinesTimeout":2000,"cruiseEndpoint":"/cruise/search/api/options","essEndpoint":"//suggest.expedia.com/api/","cobrandS3Path":"https://b.travel-assets.com/nexus-site-tooling-web/prod","taapHeaderBundleUrl":"https://d4rb83r2tty9a.cloudfront.net","envAirnz":"prod","env":"prod","locale":"en_US","version":"6ebf0b31760e51abf16f93025dfc3a02637ff63a","siteId":"1"}});
+</script>
+<!--PGC globalcontrols []-->
+<script>
+ define('uitk_messages',['uitk_i18n'],function(I18n){I18n.translations=I18n.translations||{};I18n.translations['en_US']={"cancel":"Cancel","tabs_no_total":"Tab","close_button_menu_closed":"Close button is selected and the menu has closed","map_complimentary_info":"Complementary map information","date_picker_show_months":"Showing","media_gallery_next_default":"Next image, {{arg0}} total items.","carousel_single_item_in_view":"{{arg0}}: item {{arg1}} of {{arg2}}.","off_canvas_toggle_closed":"Sidebar has closed","twitter":"Twitter","carousel_group_number_label":"Group","start_day_of_the_week":"0","resp_sort_bar_more_label":"More","selected":"selected","current_page":"current page","pagination_showing_results":"Showing Results {{arg0}} - {{arg1}} of {{arg2}}","date_separator":"/","pagination_select_page":"Select Page","months":"[January, February, March, April, May, June, July, August, September, October, November, December]","resp_sort_bar_results_label":"{{arg0}} button selected. Button {{arg1}} of {{arg2}}","map_close":"Close Map","carousel_multiple_items_in_view":"{{arg0}}: items {{arg1}} to {{arg2}} of {{arg3}}.","drawer_filter_close":"Filter panel is now closed. Back in content area","pagination_goto_page":"Go to page","content_slider_previous_label":"previous page","pagination_top_of_page":"Top of page","playback_change_search":"Change search","date_picker_date_disabled":"date disabled","carousel_previous_label":"{{arg0}}: previous group","airport":"Airports","media_gallery_no_image":"No image","pagination_prev":"Prev","item_selected_menu_closed":"You selected {{arg0}} and the menu has closed","date_picker_close_hint":"Close the Date Picker or proceed to select a date","date_picker_start_valid_range":"Start of valid date range","modal_loader_title":"Loading...","carousel_beginning":"Beginning of items.","drawer_nav_open":"Main navigation is now open","date_picker_use_hint_touch":"Choose a date from the table below","clear_button_screen_reader_text":"Clear field: {{arg0}}. Field value:","off_canvas_close":"Close sidebar","field_cleared":"Field cleared.","off_canvas_toggle_opened":"Sidebar has opened","carousel_next_label":"{{arg0}}: next group","trainstation":"Train Station","city":"Region/City","collapsed":"collapsed","media_gallery_previous_image_button":"Previous image button,","share_with":"Share With:","date_picker_next_month":"next month","content_slider_next_label":"next page","remove":"Remove","modal_loader_text_default":"Loading","expanded":"expanded","rating_stars_text":"out of {{arg0}}","media_gallery_count":"{{arg0}} of {{arg1}}.","tabs_control":"Tab {{arg0}} of {{arg1}}","date_picker_prev_month":"previous month","metrostation":"Metro Station","resp_sort_bar_sort_label":"Sort by:","hotel":"Hotels","media_gallery_next_image_button":"Next image button,","drawer_default_close":"Drawer is now closed. Back in content area","share":"Share","pagination_showing_results_in_pages":"Showing Page {{arg0}} of {{arg1}}","close":"Close","email":"Email","sort_bar_toggle_column":"toggle column","address":"Address","drawer_nav_close":"Main navigation is now closed. Back in content area","date_picker_full_days_of_the_week":"[Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]","facebook":"Facebook","date_picker_date_empty":"empty","date_picker_use_hint":"Enter a date or choose one from the table below","date_picker_date_hbs_placeholder":"mm/dd/yyyy","google_plus":"Google+","days_of_the_week":"[S, M, T, W, T, F, S]","pinterest":"Pinterest","tweet":"Tweet","typeahead_results_displayed_one":"1 suggestion is available for your convenience.  Use the arrow keys to navigate the list.","date_picker_end_valid_range":"End of valid date range","media_gallery_previous_default":"Previous image, {{arg0}} total items.","media_gallery_showing_item":"Showing item {{arg0}} of {{arg1}}.","pagination_next":"Next","attraction":"Attractions","carousel_end":"No further items available.","drawer_default_open":"Drawer is now open","carousel_default_name":"Carousel","content_slider_page_number_label":"Page","nights_text":"[one night, nights]","date_format":"mmddyy","typeahead_results_displayed_other":"{{arg0}} suggestions are available for your convenience. Use the arrow keys to navigate the list.","pagination_go_to_page":"Go to page {{arg0}}","drawer_filter_open":"Filter panel is now open"};});
+</script>
+<script>
+ define('uitk_domReady', function(){
+        return true;
+      });
+</script>
+<div aria-live="assertive" class="visuallyhidden" id="uitk-live-announce">
+</div>

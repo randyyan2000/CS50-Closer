@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Break Schedule
+{% endblock %}
+
+{% block main %}
+    <h1>Add a Trip</h1>
+    <form id="form" action="/trips" method="post">
+        <div id="1" class="form-group">
+            Trip Start: <input autocomplete="off" autofocus class="form-control" name="start" type="datetime-local" required>
+            Trip End: <input autocomplete="off" class="form-control" name="end" type="datetime-local" required>
+        </div>
+        <button id='submit' class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

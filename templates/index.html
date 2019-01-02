@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <table class="half-table" cellpadding="3">
+    <tbody>
+    <!--<div class="half-width">-->
+    <td>
+        <h1>Link</h1>
+        <div>
+            <form id="form" action="/linkrequest" method="post">
+                It looks like you're not linked with anyone yet! <br> Enter the username of the user you'd like to be linked with:
+                <input autocomplete="off" class="form-control" name="linkreq" type="text" required> <br>
+                <button id='submit' class="btn btn-primary" type="submit">Go!</button>
+            </form>
+        </div>
+    </td>
+    <!--</div>-->
+    <td style="vertical-align: top">
+    <!--<div class="half-width">-->
+        <h1>Requests</h1>
+        {% if data.requests %}
+        <table id="requestTable" class="table">
+            <thead></thead>
+            <tbody>
+                {% for request in data.requests %}
+                <tr>
+                    <td>{{ request.fromname }}</td>
+                    <td>{{ request.datetime }}</td>
+                    <td>
+                        <form action="/accept" method="post">
+                        <button id='accept{{request.fromid}}' class="btn btn-outline-success btn-sm" name="acceptid" value="{{request.fromid}}" type="submit">Accept</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        You have no incoming requests at the moment.
+        {% endif %}
+    </td>
+    <!--</div>-->
+    </tbody>
+    </table>
+            </tbody>
+        </table>
+    </div>
+
+    <!--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
+    <!--<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>-->
+{% endblock %}
