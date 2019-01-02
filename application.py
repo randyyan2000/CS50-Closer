@@ -328,7 +328,7 @@ def change_password():
 
 def errorhandler(e):
     """Handle error"""
-    return apology(type(exception).__name__, e.code)
+    return apology(type(e).__name__, e.code)
 
 
 # listen for errors

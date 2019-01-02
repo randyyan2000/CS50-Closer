@@ -46,8 +46,11 @@ def overlap(start1, end1, start2, end2):
         overlap['end'] = min(end1, end2)
     overlap['duration'] = (overlap['end'] - overlap['start']).days + 1
     # Replace datetime objects with just dates
-    overlap['start'] = overlap['start'].date()
-    overlap['end'] = overlap['end'].date()
+    try:
+        overlap['start'] = overlap['start'].date()
+        overlap['end'] = overlap['end'].date()
+    except AttributeError:
+        
     # If the duration is < 0, there is no overlap between the two date ranges
     if overlap['duration'] < 1:
         return None
