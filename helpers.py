@@ -38,8 +38,12 @@ def login_required(f):
 def overlap(start1, end1, start2, end2):
     overlap = dict()
     # Calculate break overlap duration (in days)
-    overlap['start'] = max(todate(start1), todate(start2))
-    overlap['end'] = min(todate(end1), todate(end2))
+    try:
+        overlap['start'] = max(todate(start1), todate(start2))
+        overlap['end'] = min(todate(end1), todate(end2))
+    except TypeError:
+        overlap['start'] = max(start1, start2)
+        overlap['end'] = min(end1, end2)
     overlap['duration'] = (overlap['end'] - overlap['start']).days + 1
     # Replace datetime objects with just dates
     overlap['start'] = overlap['start'].date()
