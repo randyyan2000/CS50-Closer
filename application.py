@@ -59,20 +59,20 @@ def index():
     else:
         # User is already linked
         link['name'] = db.execute('SELECT username FROM users WHERE id=:id', id=link['id'])[0]['username']
-        breaks = db.execute('SELECT start, end FROM break WHERE id=:id', id=session["user_id"])
-        linkbreaks = db.execute('SELECT start, end FROM break WHERE id=:id', id=link['id'])
+        breaks = db.execute('SELECT startdate, enddate FROM break WHERE id=:id', id=session["user_id"])
+        linkbreaks = db.execute('SELECT startdate, enddate FROM break WHERE id=:id', id=link['id'])
         overlaps = []
         # Calculate overlaps
         for br in breaks[:]:
             for lbr in linkbreaks[:]:
-                o = overlap(br['start'], br['end'], lbr['start'], lbr['end'])
+                o = overlap(br['startdate'], br['enddate'], lbr['startdate'], lbr['enddate'])
                 if o:
-                    br['start'] = formatdate(br['start'])
-                    br['end'] = formatdate(br['end'])
-                    lbr['start'] = formatdate(lbr['start'])
-                    lbr['end'] = formatdate(lbr['end'])
-                    o['start'] = formatdate(o['start'])
-                    o['end'] = formatdate(o['end'])
+                    br['startdate'] = formatdate(br['startdate'])
+                    br['enddate'] = formatdate(br['enddate'])
+                    lbr['startdate'] = formatdate(lbr['startdate'])
+                    lbr['enddate'] = formatdate(lbr['enddate'])
+                    o['startdate'] = formatdate(o['startdate'])
+                    o['enddate'] = formatdate(o['enddate'])
                     overlaps.append({'me': br, 'link': lbr, 'overlap': o})
                     breaks.remove(br)
                     linkbreaks.remove(lbr)
@@ -80,43 +80,43 @@ def index():
         # Take remaining unpaired breaks and append them to the end of overlaps
         while len(breaks) > 0:
             br = breaks.pop(0)
-            br['start'] = formatdate(br['start'])
-            br['end'] = formatdate(br['end'])
+            br['startdate'] = formatdate(br['startdate'])
+            br['enddate'] = formatdate(br['enddate'])
             overlaps.append({'me': br, 'link': None, 'overlap': None})
         while len(linkbreaks) > 0:
             lbr = linkbreaks.pop(0)
-            lbr['start'] = formatdate(lbr['start'])
-            lbr['end'] = formatdate(lbr['end'])
+            lbr['startdate'] = formatdate(lbr['startdate'])
+            lbr['enddate'] = formatdate(lbr['enddate'])
             overlaps.append({'me': None, 'link': lbr, 'overlap': None})
         # Sort break pairs by starting date
-        overlaps.sort(key=lambda x: todate(x['me']['start']) if x['me'] else todate(x['link']['start']))
+        overlaps.sort(key=lambda x: todate(x['me']['startdate']) if x['me'] else todate(x['link']['startdate']))
         data['breaks'] = overlaps
         data['link'] = link
         # Get trips from db
         trips = db.execute('SELECT * FROM trips WHERE id=:id OR id=:link', id=session["user_id"], link=link['id'])
 
         for trip in trips[:]:
-            if todatetime(trip['end']) < datetime.datetime.now():
+            if todatetime(trip['enddate']) < datetime.datetime.now():
                 # Remove trips that have already ended
-                db.execute('DELETE FROM trips WHERE end=:end AND id=:id', end=trip['end'], id=trip['id'])
+                db.execute('DELETE FROM trips WHERE enddate=:end AND id=:id', end=trip['enddate'], id=trip['id'])
                 trips.remove(trip)
-            elif todatetime(trip['start']) < datetime.datetime.now() < todatetime(trip['end']):
+            elif todatetime(trip['startdate']) < datetime.datetime.now() < todatetime(trip['enddate']):
                 # Trip is ongoing
                 trip['ongoing'] = True
-                trip['time'] = todatetime(trip['end']) - datetime.datetime.now()
+                trip['time'] = todatetime(trip['enddate']) - datetime.datetime.now()
             else:
                 # Trip has yet to start
                 trip['ongoing'] = False
-                trip['time'] = todatetime(trip['start']) - datetime.datetime.now()
+                trip['time'] = todatetime(trip['startdate']) - datetime.datetime.now()
             # Convert MySQL datetime strings into python datetimes objects
-            trip['start'] = todatetime(trip['start'])
-            trip['end'] = todatetime(trip['end'])
+            trip['startdate'] = todatetime(trip['startdate'])
+            trip['enddate'] = todatetime(trip['enddate'])
         if len(trips) > 0:
-            trips.sort(key=lambda x: x['start'])
+            trips.sort(key=lambda x: x['startdate'])
             for trip in trips:
                 # Convert datetime objects into more readable strings
-                trip['startstr'] = formatdatetime(trip['start'])
-                trip['endstr'] = formatdatetime(trip['end'])
+                trip['startstr'] = formatdatetime(trip['startdate'])
+                trip['endstr'] = formatdatetime(trip['enddate'])
                 # Add usernames to trip dict
                 if trip['id'] == session['user_id']:
                     trip['name'] = 'Me'
@@ -184,17 +184,17 @@ def breaks():
         # Clear original break schedule from db
         db.execute('DELETE FROM break WHERE id=:id', id=session['user_id'])
         # Insert new break schedule into db
-        while (request.form.get('start' + str(counter)) and request.form.get('end' + str(counter))):
-            start = request.form.get('start' + str(counter))
-            end = request.form.get('end' + str(counter))
-            db.execute("INSERT INTO break (id, start, end) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
+        while (request.form.get('startdate' + str(counter)) and request.form.get('enddate' + str(counter))):
+            start = request.form.get('startdate' + str(counter))
+            end = request.form.get('enddate' + str(counter))
+            db.execute("INSERT INTO break (id, startdate, enddate) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
             print(start, end)
             counter += 1
         return redirect("/")
     else:
         # Get existing breaks and pass them to render_template to be edited by user
-        breaks = db.execute('SELECT start, end FROM break WHERE id=:id', id=session["user_id"])
-        breaks.sort(key=lambda x: todate(x['start']))
+        breaks = db.execute('SELECT startdate, end FROM break WHERE id=:id', id=session["user_id"])
+        breaks.sort(key=lambda x: todate(x['startdate']))
         return render_template("break.html", breaks=breaks)
 
 
@@ -202,12 +202,12 @@ def breaks():
 @login_required
 def trips():
     if request.method == "POST":
-        if not request.form.get('start') or not request.form.get('end'):
+        if not request.form.get('startdate') or not request.form.get('enddate'):
             return apology("Enter start and end date of trip.")
         # Add inputted trip to db trips table
-        start = request.form.get('start')
-        end = request.form.get('end')
-        db.execute("INSERT INTO trips (id, start, end) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
+        start = request.form.get('startdate')
+        end = request.form.get('enddate')
+        db.execute("INSERT INTO trips (id, startdate, enddate) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
         return redirect("/")
     else:
         return render_template("trips.html")
