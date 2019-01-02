@@ -50,7 +50,7 @@ def overlap(start1, end1, start2, end2):
         overlap['start'] = overlap['start'].date()
         overlap['end'] = overlap['end'].date()
     except AttributeError:
-        
+        pass
     # If the duration is < 0, there is no overlap between the two date ranges
     if overlap['duration'] < 1:
         return None
