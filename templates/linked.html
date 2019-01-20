@@ -32,23 +32,30 @@ Home
                 <td>
                     <form action="/timer" method="post">
                         <!--<button id='accept{{request.fromid}}' class="btn btn-outline-success btn-sm" name="acceptid" value="{{request.fromid}}" type="submit">Accept</button>-->
-                    <button class="btn btn-outline-success btn-sm" name="time" value="
-                    {% if trip.ongoing %}
-                        {{ trip.end }}
-                    {% else %}
-                        {{ trip.start }}
-                    {% endif %}
-                    " type="submit">
-                    {% if trip.ongoing %}
-                        Ongoing!
-                    {% else %}
-                        Coming Up!
-                    {% endif %}
-                    </button>
+                        <button class="btn btn-outline-success btn-sm" name="time" value="
+                        {% if trip.ongoing %}
+                            {{ trip.enddate }}
+                        {% else %}
+                            {{ trip.startdate }}
+                        {% endif %}
+                        " type="submit">
+                        {% if trip.ongoing %}
+                            Ongoing!
+                        {% else %}
+                            Coming Up!
+                        {% endif %}
+                        </button>
                     </form>
                 </td>
                 <td id="{{ trip.start }}">
                     {{ trip.time.days }}
+                </td>
+                <td>
+                    <form action="/remove" method="POST">
+                        <button class="btn btn_outline-danger btn_sm" name="remove">
+                            Remove
+                        </button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
@@ -105,9 +112,9 @@ Home
     {% for trip in data.trips %}
     <script>
         {% if trip.ongoing %}
-            let countDownDate{{ loop.index }} = new Date({{ trip.end.year }}, {{ trip.end.month }} - 1, {{ trip.end.day }}, {{ trip.end.hour }}, {{ trip.end.minute }}, {{ trip.end.second }});//.getTime();
+            let countDownDate{{ loop.index }} = new Date({{ trip.enddate.year }}, {{ trip.enddate.month }} - 1, {{ trip.enddate.day }}, {{ tripdate.enddate.hour }}, {{ tripdate.end.minute }}, {{ tripdate.end.second }});//.getTime();
         {% else %}
-            let countDownDate{{ loop.index }} = new Date({{ trip.start.year }}, {{ trip.start.month }} - 1, {{ trip.start.day }}, {{ trip.start.hour }}, {{ trip.start.minute }}, {{ trip.start.second }});//.getTime();
+            let countDownDate{{ loop.index }} = new Date({{ trip.startdate.year }}, {{ trip.startdate.month }} - 1, {{ trip.startdate.day }}, {{ trip.startdate.hour }}, {{ trip.startdate.minute }}, {{ trip.startdate.second }});//.getTime();
         {% endif %}
         console.log(countDownDate{{ loop.index }})
         // Decrement timers

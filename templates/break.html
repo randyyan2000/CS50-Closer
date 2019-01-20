@@ -9,8 +9,8 @@
     <form id="form" action="/breaks" method="post">
         {% if breaks|length == 0 %}
             <div id="1" class="form-group">
-                1.  <input autocomplete="off" autofocus class="form-control" name="start1" type="date" required> to
-                <input autocomplete="off" class="form-control" name="end1" type="date" required>
+                1.  <input autocomplete="off" autofocus class="form-control" name="startdate" type="date" required> to
+                <input autocomplete="off" class="form-control" name="enddate" type="date" required>
                 <button id="rem1" style="visibility: hidden" type="button" onclick="removeField(this.id)" class="btn btn-primary circle-button">-</button>
             </div>
         {% else %}

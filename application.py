@@ -35,9 +35,8 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Configure CS50 Library to use SQLite database
+# Configure CS50 Library to use Postgres database
 db = SQL("postgres://ueqricbvdfbult:c611a389dd0dd552b91f2ee9f625e6cb0fa7047e80f26178c824896327568c01@ec2-54-225-150-216.compute-1.amazonaws.com:5432/d7gqtugbhnn48d")
-
 
 @app.route("/")
 @login_required
@@ -96,21 +95,25 @@ def index():
         trips = db.execute('SELECT * FROM trips WHERE id=:id OR id=:link', id=session["user_id"], link=link['id'])
 
         for trip in trips[:]:
-            if todatetime(trip['enddate']) < datetime.datetime.now():
+            nowTime = datetime.datetime.now()
+            print(trip['startdate'], trip['enddate'])
+            print(nowTime)
+            print(trip['startdate'] < nowTime)
+            if trip['enddate'] < nowTime:
                 # Remove trips that have already ended
                 db.execute('DELETE FROM trips WHERE enddate=:end AND id=:id', end=trip['enddate'], id=trip['id'])
                 trips.remove(trip)
-            elif todatetime(trip['startdate']) < datetime.datetime.now() < todatetime(trip['enddate']):
+            elif trip['startdate'] < nowTime < todatetime(trip['enddate']):
                 # Trip is ongoing
                 trip['ongoing'] = True
-                trip['time'] = todatetime(trip['enddate']) - datetime.datetime.now()
+                trip['time'] = trip['enddate'] - nowTime
             else:
                 # Trip has yet to start
                 trip['ongoing'] = False
-                trip['time'] = todatetime(trip['startdate']) - datetime.datetime.now()
-            # Convert MySQL datetime strings into python datetimes objects
-            trip['startdate'] = todatetime(trip['startdate'])
-            trip['enddate'] = todatetime(trip['enddate'])
+                trip['time'] = trip['startdate'] - nowTime
+            # IGNORE: Convert MySQL datetime strings into python datetimes objects
+            trip['startdate'] = trip['startdate']
+            trip['enddate'] = trip['enddate']
         if len(trips) > 0:
             trips.sort(key=lambda x: x['startdate'])
             for trip in trips:
@@ -170,7 +173,9 @@ def timer():
     if not request.form.get('time'):
         return apology('Something went wrong!')
     time = request.form.get('time').strip()
-    time = datetime.datetime.strptime(time, '%Y-%m-%d %H:%M:%S')
+    print(time)
+    
+    time = datetime.datetime.strptime(time[:-6], '%Y-%m-%d %H:%M:%S')
     return render_template("timer.html", time=time)
 
 
@@ -193,7 +198,7 @@ def breaks():
         return redirect("/")
     else:
         # Get existing breaks and pass them to render_template to be edited by user
-        breaks = db.execute('SELECT startdate, end FROM break WHERE id=:id', id=session["user_id"])
+        breaks = db.execute('SELECT startdate, enddate FROM break WHERE id=:id', id=session["user_id"])
         breaks.sort(key=lambda x: todate(x['startdate']))
         return render_template("break.html", breaks=breaks)
 
@@ -207,6 +212,7 @@ def trips():
         # Add inputted trip to db trips table
         start = request.form.get('startdate')
         end = request.form.get('enddate')
+        print(start, end, session)
         db.execute("INSERT INTO trips (id, startdate, enddate) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
         return redirect("/")
     else:

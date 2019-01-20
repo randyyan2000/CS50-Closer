@@ -39,16 +39,16 @@ def overlap(start1, end1, start2, end2):
     overlap = dict()
     # Calculate break overlap duration (in days)
     try:
-        overlap['start'] = max(todate(start1), todate(start2))
-        overlap['end'] = min(todate(end1), todate(end2))
+        overlap['startdate'] = max(todate(start1), todate(start2))
+        overlap['enddate'] = min(todate(end1), todate(end2))
     except TypeError:
-        overlap['start'] = max(start1, start2)
-        overlap['end'] = min(end1, end2)
-    overlap['duration'] = (overlap['end'] - overlap['start']).days + 1
+        overlap['startdate'] = max(start1, start2)
+        overlap['enddate'] = min(end1, end2)
+    overlap['duration'] = (overlap['enddate'] - overlap['startdate']).days + 1
     # Replace datetime objects with just dates
     try:
-        overlap['start'] = overlap['start'].date()
-        overlap['end'] = overlap['end'].date()
+        overlap['startdate'] = overlap['startdate'].date()
+        overlap['enddate'] = overlap['enddate'].date()
     except AttributeError:
         pass
     # If the duration is < 0, there is no overlap between the two date ranges
