@@ -96,14 +96,14 @@ def index():
 
         for trip in trips[:]:
             nowTime = datetime.datetime.now()
-            print(trip['startdate'], trip['enddate'])
-            print(nowTime)
-            print(trip['startdate'] < nowTime)
+            # print(trip['startdate'], trip['enddate'])
+            # print(nowTime)
+            # print(trip['startdate'] < nowTime)
             if trip['enddate'] < nowTime:
                 # Remove trips that have already ended
                 db.execute('DELETE FROM trips WHERE enddate=:end AND id=:id', end=trip['enddate'], id=trip['id'])
                 trips.remove(trip)
-            elif trip['startdate'] < nowTime < todatetime(trip['enddate']):
+            elif trip['startdate'] < nowTime < trip['enddate']:
                 # Trip is ongoing
                 trip['ongoing'] = True
                 trip['time'] = trip['enddate'] - nowTime
@@ -172,10 +172,10 @@ def timer():
     # Display a timer counting down towards given time
     if not request.form.get('time'):
         return apology('Something went wrong!')
-    time = request.form.get('time').strip()
+    time = str(request.form.get('time')).strip()
     print(time)
     
-    time = datetime.datetime.strptime(time[:-6], '%Y-%m-%d %H:%M:%S')
+    time = datetime.datetime.strptime(time, '%Y-%m-%d %H:%M:%S')
     return render_template("timer.html", time=time)
 
 
@@ -193,7 +193,7 @@ def breaks():
             start = request.form.get('startdate' + str(counter))
             end = request.form.get('enddate' + str(counter))
             db.execute("INSERT INTO break (id, startdate, enddate) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
-            print(start, end)
+            # print(start, end)
             counter += 1
         return redirect("/")
     else:
@@ -212,12 +212,17 @@ def trips():
         # Add inputted trip to db trips table
         start = request.form.get('startdate')
         end = request.form.get('enddate')
-        print(start, end, session)
+        # print(start, end, session)
         db.execute("INSERT INTO trips (id, startdate, enddate) VALUES(:id, :start, :end)", start=start, end=end, id=session["user_id"])
         return redirect("/")
     else:
         return render_template("trips.html")
 
+# @app.route("/removetrip/", methods=["POST"])
+# @login_required
+# def trips():
+#     if request.method == "POST":
+        
 
 @app.route("/check", methods=["GET"])
 def check():
@@ -252,7 +257,8 @@ def login():
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
-            return apology("invalid username and/or password", 403)
+            # return apology("invalid username and/or password", 403)
+            return render_template("login.html", failed=True)
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
@@ -263,7 +269,7 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login.html")
+        return render_template("login.html", failed=False)
 
 
 @app.route("/logout")

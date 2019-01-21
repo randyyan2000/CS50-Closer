@@ -47,12 +47,12 @@ Home
                         </button>
                     </form>
                 </td>
-                <td id="{{ trip.start }}">
-                    {{ trip.time.days }}
+                <td id="{{ trip.startdate }}">
+                    {{ trip.time }}
                 </td>
                 <td>
                     <form action="/remove" method="POST">
-                        <button class="btn btn_outline-danger btn_sm" name="remove">
+                        <button class="btn btn-outline-danger btn-sm" name="remove">
                             Remove
                         </button>
                     </form>
@@ -84,20 +84,20 @@ Home
                     {% for break in data.breaks %}
                     <tr>
                     <td>
-                        {% if break.me %} {{ break.me.start }} to {{ break.me.end }}
+                        {% if break.me %} {{ break.me.startdate }} to {{ break.me.enddate }}
                         {% elif loop.index == 1 and breaks|length == 1%} It looks like you haven't inputted your break schedule yet!
                         Click <a href="\breaks">here</a> to input it.
                         {% else %} —
                         {% endif %}
                     </td>
                     <td>
-                        {% if break.link %} {{ break.link.start }} to {{ break.link.end }}
+                        {% if break.link %} {{ break.link.startdate }} to {{ break.link.enddate }}
                         {# {% elif loop.index == 1 %} It looks like {{ data.link.name }} hasn't inputted any breaks yet! #}
                         {% else %} —
                         {% endif %}
                     </td>
                     {% if break.overlap %}
-                        <td>{{ break.overlap.start }} to {{ break.overlap.end }} ({{ break.overlap.duration }} days)</td>
+                        <td>{{ break.overlap.startdate }} to {{ break.overlap.enddate }} ({{ break.overlap.duration }} days)</td>
                     {% else %}
                         <td>No overlap 😢</td>
                     {% endif %}
@@ -112,7 +112,7 @@ Home
     {% for trip in data.trips %}
     <script>
         {% if trip.ongoing %}
-            let countDownDate{{ loop.index }} = new Date({{ trip.enddate.year }}, {{ trip.enddate.month }} - 1, {{ trip.enddate.day }}, {{ tripdate.enddate.hour }}, {{ tripdate.end.minute }}, {{ tripdate.end.second }});//.getTime();
+            let countDownDate{{ loop.index }} = new Date({{ trip.enddate.year }}, {{ trip.enddate.month }} - 1, {{ trip.enddate.day }}, {{ trip.enddate.hour }}, {{ trip.enddate.minute }}, {{ trip.enddate.second }});//.getTime();
         {% else %}
             let countDownDate{{ loop.index }} = new Date({{ trip.startdate.year }}, {{ trip.startdate.month }} - 1, {{ trip.startdate.day }}, {{ trip.startdate.hour }}, {{ trip.startdate.minute }}, {{ trip.startdate.second }});//.getTime();
         {% endif %}
@@ -126,7 +126,7 @@ Home
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("{{ trip.start }}").innerHTML = days + "d " + hours + "h "
+            document.getElementById("{{ trip.startdate }}").innerHTML = days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
         }, 1000);
     </script>
